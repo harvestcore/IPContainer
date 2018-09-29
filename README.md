@@ -32,3 +32,11 @@ Más info:
 
 
 
+## Herramientas y servicios
+
+- [**Python**](https://www.python.org/): Lenguaje principal de programación.
+  - [**Flask**](http://flask.pocoo.org/): Framework principal.
+- [**JSON**](http://www.json.org/): Formato ligero de intercambio de datos.
+- [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
+- [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
+

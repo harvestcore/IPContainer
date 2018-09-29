@@ -48,5 +48,8 @@ Más info:
 
 - [x] Descripción general.
 - [x] Elección de herramientas para su desarrollo.
-- [ ] 
+- [ ] Integración continua. Tests.
+- [ ] Despliegue del microservicio en un PaaS.
+- [ ] Despliegue en docker.
+- [ ] Despliegue automático a las plataformas de producción.
 

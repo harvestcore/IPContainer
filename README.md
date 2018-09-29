@@ -40,3 +40,13 @@ Más info:
 - [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
 - [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
 
+
+
+
+
+## Pasos a seguir en el desarrollo de IPContainer
+
+- [x] Descripción general.
+- [x] Elección de herramientas para su desarrollo.
+- [ ] 
+

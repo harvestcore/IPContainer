@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import unittest
-import sys
 
 from src.ipcontainer import IPContainer
 

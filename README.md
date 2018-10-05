@@ -38,7 +38,7 @@ Más info:
 
 - [**Python**](https://www.python.org/): Lenguaje principal de programación.
   - [**Flask**](http://flask.pocoo.org/): Framework principal.
-  - [**Peewee**](http://docs.peewee-orm.com/en/latest/): Como [ORM](https://es.wikipedia.org/wiki/Mapeo_objeto-relacional).
+  - [**SQLAlchemy**](https://www.sqlalchemy.org/): Como [ORM](https://es.wikipedia.org/wiki/Mapeo_objeto-relacional).
 - [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
 - [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
 

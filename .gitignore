@@ -1,5 +1,6 @@
 ### BD Config ###
 config.py
+config.json
 
 ### VSCode ###
 .vscode/

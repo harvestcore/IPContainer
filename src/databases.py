@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import urllib, json
-import config 
+
+with open('./config.json') as f:
+    key = json.load(f)
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = config.connector
+app.config['SQLALCHEMY_DATABASE_URI'] = key["key"]
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -27,19 +29,25 @@ class Data(db.Model):
         db.session.add(to_insert)
         db.session.commit()
 
-    def update(_id, _data):
-        to_update = Data.query.filter_by(_id = _id).first()
+    def updateData(_username, _type, _data):
+        to_update = Data.query.filter_by(_username = _username, _type = _type).first()
         to_update._id = _data
         db.session.commit()
 
-    def delete(idd):
+    def delete(_id):
         to_delete = Data.session.query.filter_by(_id = _id).first()
         db.session.delete(to_delete)
         db.session.commit()
 
-    def select(idd):
-        to_select = Data.query.filter_by(_id = _id).first()
-        return to_select._data
+    def select(_id):
+        return Data.query.filter_by(_id = _id).first()
+
+    def exist(_username, _type):
+        return Data.query.filter_by(_username = _username, _type = _type).count() == 1
+
+    def getData(_username, _type):
+        to_get = Data.query.filter_by(_username = _username, _type = _type).first()
+        return to_get._data
 
 
 class Users(db.Model):
@@ -69,3 +77,6 @@ class Users(db.Model):
     def select(_id):
         to_select = Users.query.filter_by(_id = _id).first()
         return to_select._username
+
+    def exist(_username):
+        return Users.query.filter_by(_username = _username).count() == 1

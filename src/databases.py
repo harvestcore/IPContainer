@@ -31,16 +31,13 @@ class Data(db.Model):
 
     def updateData(_username, _type, _data):
         to_update = Data.query.filter_by(_username = _username, _type = _type).first()
-        to_update._id = _data
+        to_update._data = _data
         db.session.commit()
 
-    def delete(_id):
-        to_delete = Data.session.query.filter_by(_id = _id).first()
+    def delete(_username, _type):
+        to_delete = Data.query.filter_by(_username = _username, _type = _type).first()
         db.session.delete(to_delete)
         db.session.commit()
-
-    def select(_id):
-        return Data.query.filter_by(_id = _id).first()
 
     def exist(_username, _type):
         return Data.query.filter_by(_username = _username, _type = _type).count() == 1
@@ -69,14 +66,10 @@ class Users(db.Model):
         to_update._username = _username
         db.session.commit()
 
-    def delete(_id):
-        to_delete = Users.session.query.filter_by(_id = _id).first()
+    def delete(_username):
+        to_delete = Users.session.query.filter_by(_username = _username).first()
         db.session.delete(to_delete)
         db.session.commit()
-
-    def select(_id):
-        to_select = Users.query.filter_by(_id = _id).first()
-        return to_select._username
 
     def exist(_username):
         return Users.query.filter_by(_username = _username).count() == 1

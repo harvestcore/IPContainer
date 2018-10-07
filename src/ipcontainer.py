@@ -1,4 +1,4 @@
-from databases import Users, Data
+from .databases import Users, Data
 import json, simplejson
 
 def mergeJSON(jsonA, jsonB):
@@ -9,8 +9,15 @@ def mergeJSON(jsonA, jsonB):
     return jsonA
     
 
-class IPContainer:
+class IPContainer():
     
+    def existUser(self, _username):
+        ret = False
+        if Users.exist(_username):
+            ret = True
+
+        return ret
+
     def addUser(self, _username):
         ret = False
         if not Users.exist(_username):
@@ -23,6 +30,19 @@ class IPContainer:
         ret = False
         if Users.exist(_username):
             Users.delete(_username)
+            ret = True
+
+        return ret
+
+    def getNumberOfUsers(self):
+        return Users.tableSize()
+
+    def getNumberOfNetworks(self):
+        return Data.tableSize()
+
+    def existNetwork(self, _username, _type):
+        ret = False
+        if Data.exist(_username, _type):
             ret = True
 
         return ret
@@ -80,8 +100,18 @@ class IPContainer:
 
         return ret
 
+    def getNetworkSize(self, _username, _type):
+        if Users.exist(_username):
+            if Data.exist(_username, _type):
+                return len(Data.getData(_username, _type)["data"])
+
     def getData(self, _username, _type):
         if Users.exist(_username):
             if Data.exist(_username, _type):
                 return Data.getData(_username, _type)
 
+    def _dropUsers(self):
+        Users._dropTable()
+
+    def _dropData(self):
+        Data._dropTable()

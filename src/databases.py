@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import urllib, json
 
-with open('./config.json') as f:
+with open('./src/config.json') as f:
     key = json.load(f)
 
 app = Flask(__name__)
@@ -46,6 +46,18 @@ class Data(db.Model):
         to_get = Data.query.filter_by(_username = _username, _type = _type).first()
         return to_get._data
 
+    def tableSize():
+        return Data.query.filter_by().count()
+
+    def _dropTable():
+        for nr in db.session.query(Data._id).distinct():
+            row_to_delete = Data.query.get(nr)
+            test = row_to_delete._username
+            db.session.delete(row_to_delete)
+
+        db.session.commit()
+        
+
 
 class Users(db.Model):
     __tablename__ = "users"
@@ -67,9 +79,20 @@ class Users(db.Model):
         db.session.commit()
 
     def delete(_username):
-        to_delete = Users.session.query.filter_by(_username = _username).first()
+        to_delete = Users.query.filter_by(_username = _username).first()
         db.session.delete(to_delete)
         db.session.commit()
 
     def exist(_username):
         return Users.query.filter_by(_username = _username).count() == 1
+
+    def tableSize():
+        return Users.query.filter_by().count()
+
+    def _dropTable():
+        for nr in db.session.query(Users._id).distinct():
+            row_to_delete = Users.query.get(nr)
+            test = row_to_delete._username
+            db.session.delete(row_to_delete)
+
+        db.session.commit()

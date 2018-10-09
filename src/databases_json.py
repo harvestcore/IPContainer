@@ -1,48 +1,54 @@
 import json
 
-with open('./src/json/row_user.json') as f:
-    user_json = json.load(f)
-
-with open('./src/json/row_data.json') as f:
-    data_json = json.load(f)
-
 users = []
 data = []
 
 class Data():
-    def __init__(self, _username = "", _type = "", _data = ""):
-        self._username = _username
-        self._type = _type
-        self._data = _data
+    def createNetwork(_username, _type):
+        ret = False
+        with open('./src/json/row_data.json') as f:
+            data_json = json.load(f)
+            data_json["username"] = _username
+            data_json["type"] = _type
+            data.append(data_json)
+            ret = True
 
-    def insert(_username, _type, _data):
-        data_json["username"] = _username
-        data_json["type"] = _type
-        data_json["data"] = _data
-        data.append({"username": _username,"type": _type,"data": _data})
+        return ret
+
+    def addIPtoNetwork(_username, _type, _data):
+        ret = False
+        for x in data:
+            if x["username"] == _username and x["type"] == _type:
+                x["data"].append(_data)
+                ret = True
+
+        return ret
 
     def updateData(_username, _type, _data):
+        ret = True
         for x in data:
             if x["username"] == _username and x["type"] == _type:
                 x["data"] = _data
-                return True
+                ret = True
 
-        return False
+        return ret
 
     def delete(_username, _type):
+        ret = False
         for i in range(len(data)):
             if data[i]["username"] == _username and data[i]["type"] == _type:
                 data.pop(i)
-                return True
+                ret = True
 
-        return False
+        return ret
 
     def exist(_username, _type):
+        ret = False
         for x in data:
             if x["username"] == _username and x["type"] == _type:
-                return True
+                ret = True
         
-        return False
+        return ret
 
     def getData(_username, _type):
         for x in data:
@@ -53,36 +59,25 @@ class Data():
         return len(data)
 
     def _dropTable():
-        for x in range(len(data)):
-            data.pop(x)
-        
+        data.clear()
+
 
 
 class Users():
-    def __init__(self, _username = ""):
-        self._username = _username
-
     def insert(_username):
         users.append(_username)
 
     def delete(_username):
-        for i in range(len(users)):
-            if users[i] == _username:
-                users.pop(i)
-                return True
-
-        return False
+        users.remove(_username)
 
     def exist(_username):
-        for x in users:
-            if x == _username:
-                return True
-        
-        return False
+        if _username in users:
+            return True
+        else:
+            return False
 
     def tableSize():
         return len(users)
 
     def _dropTable():
-        for x in range(len(users)):
-            users.pop(x)
+        users.clear()

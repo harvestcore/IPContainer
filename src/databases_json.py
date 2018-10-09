@@ -53,7 +53,8 @@ class Data():
     def getData(_username, _type):
         for x in data:
             if x["username"] == _username and x["type"] == _type:
-                return x["data"]
+                if isinstance(x["data"], list):
+                    return x["data"]
 
     def tableSize():
         return len(data)

@@ -47,11 +47,11 @@ class IPContainer():
 
         return ret
 
-    def createNetwork(self, _username, _type, _data):
+    def createNetwork(self, _username, _type):
         ret = False
         if Users.exist(_username):
             if not Data.exist(_username, _type):
-                Data.insert(_username, _type, _data)
+                Data.createNetwork(_username, _type)
                 ret = True
 
         return ret
@@ -69,9 +69,8 @@ class IPContainer():
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
-                jsonA = Data.getData(_username, _type)
-                jsonMerged = mergeJSON(jsonA, _data)
-                Data.updateData(_username, _type, jsonMerged)
+                datalist = Data.getData(_username, _type)
+                Data.updateData(_username, _type, datalist.append(_data))
                 ret = True
 
         return ret

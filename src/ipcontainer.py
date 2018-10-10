@@ -12,11 +12,7 @@ def mergeJSON(jsonA, jsonB):
 class IPContainer():
 
     def existUser(self, _username):
-        ret = False
-        if Users.exist(_username):
-            ret = True
-
-        return ret
+        return Users.exist(_username)
 
     def addUser(self, _username):
         ret = False
@@ -29,8 +25,7 @@ class IPContainer():
     def removeUser(self, _username):
         ret = False
         if Users.exist(_username):
-            Users.delete(_username)
-            ret = True
+            ret = Users.delete(_username)
 
         return ret
 
@@ -41,18 +36,13 @@ class IPContainer():
         return Data.tableSize()
 
     def existNetwork(self, _username, _type):
-        ret = False
-        if Data.exist(_username, _type):
-            ret = True
-
-        return ret
+        return Data.exist(_username, _type)
 
     def createNetwork(self, _username, _type):
         ret = False
         if Users.exist(_username):
             if not Data.exist(_username, _type):
-                Data.createNetwork(_username, _type)
-                ret = True
+                ret = Data.createNetwork(_username, _type)
 
         return ret
 
@@ -60,8 +50,7 @@ class IPContainer():
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
-                Data.delete(_username, _type)
-                ret = True
+                ret = Data.delete(_username, _type)
 
         return ret
 
@@ -69,8 +58,7 @@ class IPContainer():
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
-                data.addIPtoNetwork(_username, _type, _data)
-                ret = True
+                ret = Data.addIPtoNetwork(_username, _type, _data)
 
         return ret
 
@@ -94,7 +82,7 @@ class IPContainer():
                             ret = True
 
                 if ret:
-                    Data.updateData(_username, _type, data)
+                    ret = Data.updateData(_username, _type, data)
 
         return ret
 
@@ -103,10 +91,17 @@ class IPContainer():
             if Data.exist(_username, _type):
                 return len(Data.getData(_username, _type)["data"])
 
+        return None
+
     def getData(self, _username, _type):
         if Users.exist(_username):
             if Data.exist(_username, _type):
                 return Data.getData(_username, _type)
+
+        return None
+
+    def getUsers(self):
+        return Users.showUsers()
 
     def _dropUsers(self):
         Users._dropTable()

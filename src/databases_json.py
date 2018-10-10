@@ -62,6 +62,8 @@ class Data():
     def _dropTable():
         data.clear()
 
+    def showData():
+        return data
 
 
 class Users():
@@ -82,3 +84,6 @@ class Users():
 
     def _dropTable():
         users.clear()
+
+    def showUsers():
+        return users

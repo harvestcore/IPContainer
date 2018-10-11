@@ -9,8 +9,7 @@ with open('./src/json/ip.json') as f:
 with open('./src/json/dns.json') as f2:
         data_dns = json.load(f2)
 
-data = {"dns1": "5.5.5.5", "dns2": "5.5.5.5", "nombre":"angel"}
-data2 = {"dns1": "10.10.10.10", "dns2": "10.10.10.10", "nombre":"angel"}
+data = {"dns1": "5.5.5.5", "dns2": "5.5.5.5", "nombre":"test_user1"}
 
 class testIPContainer(unittest.TestCase):
     def setUp(self):
@@ -45,8 +44,13 @@ class testIPContainer(unittest.TestCase):
     def test_crea_red_que_ya_existe(self):
         self.assertEqual(self.ipc.createNetwork("test_user1", "dns"), False, "Red existente no creada")
 
-    # def test_agrega_ip_a_red_existente(self):
-    #     self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data2), True, "IP agregada a la red existente correctamente")
+    def test_agrega_ip_a_red_existente(self):
+        if not self.ipc.existUser("test_user1"):
+            self.ipc.addUser("test_user1")
+            if not self.ipc.existNetwork("test_user1", "dns"):
+                self.ipc.createNetwork("test_user1", "dns")
+                self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data), True, "IP agregada 1 a la red existente correctamente")
+                self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data), True, "IP agregada 2 a la red existente correctamente")
 
 if __name__ == '__main__':
 	unittest.main()

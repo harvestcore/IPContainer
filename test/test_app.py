@@ -10,6 +10,7 @@ with open('./src/json/dns.json') as f2:
         data_dns = json.load(f2)
 
 data = {"dns1": "5.5.5.5", "dns2": "5.5.5.5", "nombre":"test_user1"}
+data2 = {"dns1": "10.10.10.10", "dns2": "10.10.10.10", "nombre":"test_user1"}
 
 class testIPContainer(unittest.TestCase):
     def setUp(self):
@@ -50,7 +51,10 @@ class testIPContainer(unittest.TestCase):
             if not self.ipc.existNetwork("test_user1", "dns"):
                 self.ipc.createNetwork("test_user1", "dns")
                 self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data), True, "IP agregada 1 a la red existente correctamente")
-                self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data), True, "IP agregada 2 a la red existente correctamente")
+                self.assertEqual(self.ipc.addIPtoNetwork("test_user1", "dns", data2), True, "IP agregada 2 a la red existente correctamente")
+
+    # def test_elimina_ip_de_red_existente():
+    #     self.assertEqual(self.ipc.removeIPfromNetwork("test_user1", "dns", "10.10.10.10"), True, "IP borrada de la red existente")
 
 if __name__ == '__main__':
 	unittest.main()

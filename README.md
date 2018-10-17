@@ -6,6 +6,19 @@
 
 
 
+## Test News
+
+[![Build Status](https://travis-ci.com/harvestcore/ipcontainer-test.svg?branch=master)](https://travis-ci.com/harvestcore/ipcontainer-test)
+
+Debido a que el microservicio necesita una base de datos estoy probando una serie de tests con Docker en estos repositorios:
+
+- [ipcontainer-test](https://github.com/harvestcore/ipcontainer-test)
+- [IPContainer2](https://github.com/harvestcore/IPContainer2)
+
+Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro con Python. El segundo se conecta al primero para acceder a los datos. El repositorio *IPContainer2* contiene una versión más actualizada de este mismo repositorio. Cuando los contenedores y el sistema de test esté perfectamente comprobado y funcionando lo implementaré en este repositorio.
+
+
+
 ## ¿Qué es?
 
 IPContainer es un microservicio centrado en el almacenamiento y gestión básica de direcciones IP. Permite tener almacenadas una serie de direcciones IP en un mismo lugar, agrupadas por tipo de red:

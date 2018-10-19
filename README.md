@@ -59,6 +59,12 @@ Más info:
 
 
 
+## Documentación:
+
+- [API](doc/api.md)
+
+
+
 ## Pasos a seguir en el desarrollo de IPContainer
 
 - [x] Descripción general.

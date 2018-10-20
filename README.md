@@ -44,7 +44,6 @@ Más info:
 
 - [Web del proyecto](https://harvestcore.github.io/es/ipcontainer/index.html).
 - [Web del repositorio](https://harvestcore.github.io/IPContainer).
-- [Funcionalidades](doc/funcionalidades.md).
 - [Base de datos](doc/bd.md).
 
 

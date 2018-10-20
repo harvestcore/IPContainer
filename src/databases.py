@@ -19,13 +19,13 @@ class Data(db.Model):
     _type = db.Column('type', db.String(4))
     _data = db.Column('data', db.JSON)
 
-    def __init__(self, _username = "", _type = "", _data = ""):
+    def __init__(self, _username = "", _type = "", _data = {"data":[]}):
         self._username = _username
         self._type = _type
         self._data = _data
 
-    def insert(_username, _type, _data):
-        to_insert = Data(_username, _type, _data)
+    def createNetwork(_username, _type):
+        to_insert = Data(_username, _type)
         db.session.add(to_insert)
         db.session.commit()
 
@@ -34,6 +34,10 @@ class Data(db.Model):
         to_update._data = _data
         db.session.commit()
 
+    def getData(_username, _type):
+        to_get = Data.query.filter_by(_username = _username, _type = _type).first()
+        return to_get._data
+
     def delete(_username, _type):
         to_delete = Data.query.filter_by(_username = _username, _type = _type).first()
         db.session.delete(to_delete)
@@ -41,10 +45,6 @@ class Data(db.Model):
 
     def exist(_username, _type):
         return Data.query.filter_by(_username = _username, _type = _type).count() == 1
-
-    def getData(_username, _type):
-        to_get = Data.query.filter_by(_username = _username, _type = _type).first()
-        return to_get._data
 
     def tableSize():
         return Data.query.filter_by().count()

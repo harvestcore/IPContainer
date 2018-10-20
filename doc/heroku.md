@@ -11,15 +11,15 @@
 1. Registro en [Heroku](https://www.heroku.com/).
 2. Crear una app.
 
-![createapp](C:\Users\Angel\Dropbox\Universidad\4-Cuarto\Primer cuatri\IV\Proyecto\doc\img\createappheroku.PNG)
+![createapp](img\createappheroku.PNG)
 
 3. Configurar despliegue con GitHub.
 
-![configheroku](C:\Users\Angel\Dropbox\Universidad\4-Cuarto\Primer cuatri\IV\Proyecto\doc\img\configheroku.PNG)
+![configheroku](img\configheroku.PNG)
 
 4. En mi caso configuro una variable de entorno, debido a que necesito conexión a una BD.
 
-![envvarheroku](C:\Users\Angel\Dropbox\Universidad\4-Cuarto\Primer cuatri\IV\Proyecto\doc\img\envvarheroku.PNG)
+![envvarheroku](img\envvarheroku.PNG)
 
 5. Creo archivo Procfile con el siguiente contenido y lo añado al repositorio.
 
@@ -31,4 +31,4 @@ web: gunicorn app:app
 
 7. Compruebo que el microservicio está desplegado.
 
-![worksheroku](C:\Users\Angel\Dropbox\Universidad\4-Cuarto\Primer cuatri\IV\Proyecto\doc\img\worksheroku.PNG)
+![worksheroku](img\worksheroku.PNG)

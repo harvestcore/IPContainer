@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.com/harvestcore/IPContainer.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer)
 
+![Heroku](http://heroku-badge.herokuapp.com/?app=ipcontainer)
+
 
 
 ## Test News
@@ -55,6 +57,8 @@ Más info:
   - [**SQLAlchemy**](https://www.sqlalchemy.org/): Como [ORM](https://es.wikipedia.org/wiki/Mapeo_objeto-relacional).
 - [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
 - [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
+- [**Heroku**](https://www.heroku.com/): Como PaaS.
+- [**Microsoft Azure**](https://azure.microsoft.com/es-es/): Como PaaS.
 
 
 
@@ -68,7 +72,7 @@ Más info:
 
 - [x] Descripción general.
 - [x] Elección de herramientas para su desarrollo.
-- [ ] Integración continua. Tests.
+- [x] Integración continua. Tests.
 - [ ] Despliegue del microservicio en un PaaS.
 - [ ] Despliegue en docker.
 - [ ] Despliegue automático a las plataformas de producción.

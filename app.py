@@ -6,8 +6,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
-    return "who dis"
-    #return jsonify(status="OK")
+    return jsonify(status="OK")
 
 @app.route("/status", methods=['GET'])
 def status():

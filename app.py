@@ -5,8 +5,9 @@ from src.ipcontainer import IPContainer
 app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
-def hello():
-    return jsonify(status="OK")
+def index():
+    return "who dis"
+    #return jsonify(status="OK")
 
 @app.route("/status", methods=['GET'])
 def status():

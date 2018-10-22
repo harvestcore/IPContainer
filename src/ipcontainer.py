@@ -1,20 +1,18 @@
-from .databases_json import Users, Data
-import json, simplejson
+from .databases import Users, Data
+import json, simplejson, ipaddress
 
 def mergeJSON(jsonA, jsonB):
-    
     for i in range(len(jsonB["data"])):
-        jsonA["data"].append(jsonB["data"][i])
+        jsonA["data"].append(jsonB["data"][int(i)])
 
     return jsonA
-    
 
 class IPContainer():
 
-    def existUser(self, _username):
+    def existUser(_username):
         return Users.exist(_username)
 
-    def addUser(self, _username):
+    def addUser(_username):
         ret = False
         if not Users.exist(_username):
             Users.insert(_username)
@@ -22,47 +20,53 @@ class IPContainer():
 
         return ret
 
-    def removeUser(self, _username):
+    def removeUser(_username):
         ret = False
         if Users.exist(_username):
-            ret = Users.delete(_username)
+            Users.delete(_username)
+            ret = True
 
         return ret
 
-    def getNumberOfUsers(self):
+    def getNumberOfUsers():
         return Users.tableSize()
 
-    def getNumberOfNetworks(self):
+    def getNumberOfNetworks():
         return Data.tableSize()
 
-    def existNetwork(self, _username, _type):
+    def existNetwork(_username, _type):
         return Data.exist(_username, _type)
 
-    def createNetwork(self, _username, _type):
+    def createNetwork(_username, _type):
         ret = False
         if Users.exist(_username):
             if not Data.exist(_username, _type):
-                ret = Data.createNetwork(_username, _type)
+                Data.createNetwork(_username, _type)
+                ret = True
 
         return ret
 
-    def removeNetwork(self, _username, _type):
+    def removeNetwork(_username, _type):
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
-                ret = Data.delete(_username, _type)
+                Data.delete(_username, _type)
+                ret = True
 
         return ret
 
-    def addIPtoNetwork(self, _username, _type, _data):
+    def addIPtoNetwork(_username, _type, _data):
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
-                ret = Data.addIPtoNetwork(_username, _type, _data)
+                jsonA = Data.getData(_username, _type)
+                jsonMerged = mergeJSON(jsonA, _data)
+                Data.updateData(_username, _type, jsonMerged)
+                ret = True
 
         return ret
 
-    def removeIPfromNetwork(self, _username, _type, _ip):
+    def removeIPfromNetwork(_username, _type, _ip):
         ret = False
         if Users.exist(_username):
             if Data.exist(_username, _type):
@@ -71,40 +75,37 @@ class IPContainer():
                 if _type == "dns":
                     for i in range(len(data["data"]) - 1):
                         print(len(data["data"]))
-                        if data["data"][i]["dns1"] == _ip or data["data"][i]["dns2"] == _ip:
-                            data["data"].pop(i)
+                        if data["data"][int(i)]["dns1"] == _ip or data["data"][int(i)]["dns2"] == _ip:
+                            data["data"].pop(int(i))
                             ret = True
 
                 else:
                     for i in range(len(data["data"]) - 1):
-                        if data["data"][i]["ip"] == _ip:
-                            data["data"].pop(i)
+                        if data["data"][int(i)]["ip"] == _ip:
+                            data["data"].pop(int(i))
                             ret = True
 
                 if ret:
-                    ret = Data.updateData(_username, _type, data)
+                    Data.updateData(_username, _type, data)
 
         return ret
 
-    def getNetworkSize(self, _username, _type):
+    def getNetworkSize(_username, _type):
         if Users.exist(_username):
             if Data.exist(_username, _type):
                 return len(Data.getData(_username, _type)["data"])
 
         return None
 
-    def getData(self, _username, _type):
+    def getData(_username, _type):
         if Users.exist(_username):
             if Data.exist(_username, _type):
                 return Data.getData(_username, _type)
 
         return None
 
-    def getUsers(self):
-        return Users.showUsers()
-
-    def _dropUsers(self):
+    def _dropUsers():
         Users._dropTable()
 
-    def _dropData(self):
+    def _dropData():
         Data._dropTable()

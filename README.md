@@ -10,19 +10,6 @@
 
 
 
-## Test News
-
-Debido a que el microservicio necesita una base de datos estoy probando una serie de tests con Docker en estos repositorios:
-
-- [![Build Status](https://travis-ci.com/harvestcore/ipcontainer-test.svg?branch=master)](https://travis-ci.com/harvestcore/ipcontainer-test) [ipcontainer-test](https://github.com/harvestcore/ipcontainer-test)
-- [![Build Status](https://travis-ci.com/harvestcore/IPContainer2.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer2) [IPContainer2](https://github.com/harvestcore/IPContainer2)
-
-Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro con Python. El segundo se conecta al primero para acceder a los datos. El repositorio *IPContainer2* contiene una versión más actualizada de este mismo repositorio. Cuando los contenedores y el sistema de test esté perfectamente comprobado y funcionando lo implementaré en este repositorio.
-
-Por otro lado, he probado una nueva serie de test (en IPContainer2) con una BD en [db4free](https://www.db4free.net/). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
-
-
-
 ## ¿Qué es?
 
 IPContainer es un microservicio centrado en el almacenamiento y gestión básica de direcciones IP. Permite tener almacenadas una serie de direcciones IP en un mismo lugar, agrupadas por tipo de red:
@@ -42,13 +29,10 @@ Por otro lado permite almacenar direcciones IP de servidores DNS.
 
 La idea surge tras necesitar un lugar donde tener una serie de direcciones IP organizadas y almacenadas en un mismo lugar, sin depender de mirar archivos de configuración o uso de otras aplicaciones.
 
-
-
 Más info:
 
-- [Web del proyecto](https://harvestcore.github.io/es/ipcontainer/index.html).
-- [Web del repositorio](https://harvestcore.github.io/IPContainer).
-- [Base de datos](doc/bd.md).
+- [Web del proyecto](https://harvestcore.github.io/es/ipcontainer/index.html)
+- [Web del repositorio](https://harvestcore.github.io/IPContainer)
 
 
 
@@ -66,7 +50,23 @@ Más info:
 
 ## Documentación:
 
-- [API](doc/api.md)
+- [**API**](doc/api.md)
+- [**Base de datos**](doc/bd.md)
+- [**Despliegue en Heroku**](doc/heroku.md)
+- [**Despliegue en Microsoft Azure**](doc/azure.md)
+
+
+
+## Test News
+
+Debido a que el microservicio necesita una base de datos estoy probando una serie de tests con Docker en estos repositorios:
+
+- [![Build Status](https://travis-ci.com/harvestcore/ipcontainer-test.svg?branch=master)](https://travis-ci.com/harvestcore/ipcontainer-test) [ipcontainer-test](https://github.com/harvestcore/ipcontainer-test)
+- [![Build Status](https://travis-ci.com/harvestcore/IPContainer2.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer2) [IPContainer2](https://github.com/harvestcore/IPContainer2)
+
+Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro con Python. El segundo se conecta al primero para acceder a los datos. El repositorio *IPContainer2* contiene una versión más actualizada de este mismo repositorio. Cuando los contenedores y el sistema de test esté perfectamente comprobado y funcionando lo implementaré en este repositorio.
+
+Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD en [db4free](https://www.db4free.net/). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
 
 
 

@@ -10,7 +10,7 @@ def index():
 
 @app.route("/status", methods=['GET'])
 def status():
-    return jsonify(users=IPContainer.getNumberOfUsers(), networks=IPContainer.getNumberOfNetworks())
+    return IPContainer.getStatus()
 
 @app.route("/addUser/<user>", methods=['POST'])
 def addUser(user):

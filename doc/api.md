@@ -2,10 +2,13 @@
 
 ## General
 
-| Método |   URI   | Parámetros |                Return                 |     Función     |
-| :----: | :-----: | :--------: | :-----------------------------------: | :-------------: |
-|  GET   |    /    |     -      |            {"status":"OK"}            |       OK.       |
-|  GET   | /status |     -      | {"users":"`int`", "networks":"`int`"} | Estado general. |
+| Método |      URI       |     Parámetros     |                            Return                            |              Función               |
+| :----: | :------------: | :----------------: | :----------------------------------------------------------: | :--------------------------------: |
+|  GET   |       /        |         -          |                       {"status":"OK"}                        |                OK.                 |
+|  GET   |    /status     |         -          |    {"users":"`int`", "noofnetworks":`int` "networks":{}}     | Estado general y resumen de redes. |
+|  GET   | /status/`user` | Nombre de usuario. | {"username": `user`,
+    "noofnetworks": `int`,
+    "networks": []} |    Resumen de redes de `user`.     |
 
 
 
@@ -15,7 +18,7 @@
 | :----: | :----------------: | :----------------: | :-------------------: | :-----------------------------: |
 |  POST  |  /addUser/`user`   | Nombre de usuario. | {"success":`boolean`} |       Agrega un usuario.        |
 |  POST  | /removeUser/`user` | Nombre de usuario. | {"success":`boolean`} |       Elimina un usuario.       |
-|  GET   | /getNumberOfUsers  |         -          |   {"users":"`int`"}   | Consulta el número de usuarios. |
+|  GET   | /getNumberOfUsers  |         -          |    {"users":`int`}    | Consulta el número de usuarios. |
 |  GET   | /existsUser/`user` | Nombre de usuario. | {"exists":`boolean`}  | Comprueba si existe un usuario. |
 |  GET   |    /_dropUsers     |         -          | {"success":`boolean`} |   Elimina todos los usuarios.   |
 

@@ -36,6 +36,11 @@ class Data(db.Model):
         to_get = Data.query.filter_by(_username = _username, _type = _type).first()
         return to_get._data
 
+    def getAllData(_username):
+        to_get = Data.query.filter_by(_username = _username).all()
+        # to_get es una lista que contiene todas las redes de _username
+        return to_get
+
     def delete(_username, _type):
         to_delete = Data.query.filter_by(_username = _username, _type = _type).first()
         db.session.delete(to_delete)

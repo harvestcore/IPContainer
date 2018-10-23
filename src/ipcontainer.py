@@ -1,5 +1,6 @@
 from .databases import Users, Data
 import json, simplejson, ipaddress
+from flask import jsonify
 
 def mergeJSON(jsonA, jsonB):
     for i in range(len(jsonB["data"])):
@@ -102,6 +103,17 @@ class IPContainer():
             if Data.exist(_username, _type):
                 return Data.getData(_username, _type)
 
+        return None
+
+    def getAllData(_username):
+        if Users.exist(_username):
+            data = Data.getAllData(_username)
+            djson = {'username':_username, 'networks':[]}
+            for i in range (len(data)):
+                djson['networks'].append({'type':data[i]._type, 'network':data[i]._data})
+
+            return json.dumps(djson)
+        
         return None
 
     def _dropUsers():

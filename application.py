@@ -60,6 +60,10 @@ def getNetworkSize(user, _type):
 def getData(user, _type):
     return jsonify(user=user, network=_type, data=IPContainer.getData(str(user), str(_type)))
 
+@app.route("/status/<user>", methods=['GET'])
+def statusUser(user):
+    return IPContainer.getAllData(str(user))
+
 @app.route("/_dropUsers", methods=['GET'])
 def _dropUsers():
     IPContainer._dropUsers()

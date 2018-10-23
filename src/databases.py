@@ -41,6 +41,10 @@ class Data(db.Model):
         # to_get es una lista que contiene todas las redes de _username
         return to_get
 
+    def countType(_type):
+        to_get = Data.query.filter_by(_type = _type).all()
+        return len(to_get)
+
     def delete(_username, _type):
         to_delete = Data.query.filter_by(_username = _username, _type = _type).first()
         db.session.delete(to_delete)

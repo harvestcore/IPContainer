@@ -17,7 +17,7 @@
 
 4. En mi caso configuro una variable de entorno, debido a que necesito conexión a una BD.
 
-![envvarazure](img/envvarazure.png)
+![envvarazure](img/envazure.png)
 
 5. Compruebo que el microservicio está desplegado.
 

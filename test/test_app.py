@@ -38,8 +38,8 @@ class testIPContainer(unittest.TestCase):
         self.assertEqual(IPContainer.createNetwork("test_user1", "dns"), False, "Red existente no creada")
 
     def test_g_agrega_ip_a_red_existente(self):
-        data = {"data":[{"dns1":"5.5.5.5", "dns2":"5.5.5.5", "nombre":"test"}]}
-        data2 = {"data":[{"dns1":"10.10.10.10", "dns2":"10.10.10.10", "nombre":"test"}]}
+        data = {"dns1":"5.5.5.5", "dns2":"5.5.5.5", "nombre":"test"}
+        data2 = {"dns1":"10.10.10.10", "dns2":"10.10.10.10", "nombre":"test"}
         self.assertEqual(IPContainer.addIPtoNetwork("test_user1", "dns", data), True, "IP agregada 1 a la red existente correctamente")
         self.assertEqual(IPContainer.addIPtoNetwork("test_user1", "dns", data2), True, "IP agregada 2 a la red existente correctamente")
 

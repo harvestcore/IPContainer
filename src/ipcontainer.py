@@ -3,8 +3,9 @@ import json, simplejson, ipaddress
 from flask import jsonify
 
 def mergeJSON(jsonA, jsonB):
-    for i in range(len(jsonB["data"])):
-        jsonA["data"].append(jsonB["data"][int(i)])
+    # for i in range(len(jsonB["data"])):
+    #     jsonA["data"].append(jsonB["data"][int(i)])
+    jsonA["data"].append(jsonB)
 
     return jsonA
 

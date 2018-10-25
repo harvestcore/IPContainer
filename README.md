@@ -51,6 +51,7 @@ Más info:
 ## Documentación:
 
 - [**API**](doc/api.md)
+- [**Autenticación con token**](doc/auth.md)
 - [**Base de datos**](doc/bd.md)
 - [**Despliegue en Heroku**](doc/heroku.md)
 - [**Despliegue en Microsoft Azure**](doc/azure.md)
@@ -75,6 +76,7 @@ Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD 
 - [x] Descripción general.
 - [x] Elección de herramientas para su desarrollo.
 - [x] Integración continua. Tests.
+- [ ] Autenticación con token.
 - [ ] Despliegue del microservicio en un PaaS.
 - [ ] Despliegue en docker.
 - [ ] Despliegue automático a las plataformas de producción.

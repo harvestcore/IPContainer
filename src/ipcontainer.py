@@ -1,6 +1,8 @@
-from .databases import Users, Data
+from .databases import Users, Data, APIUsers
 import json, simplejson, ipaddress
 from flask import jsonify
+import uuid, jwt, datetime, os
+from werkzeug.security import generate_password_hash, check_password_hash
 
 def mergeJSON(jsonA, jsonB):
     # for i in range(len(jsonB["data"])):
@@ -128,3 +130,62 @@ class IPContainer():
 
     def _dropData():
         Data._dropTable()
+
+    #############################
+    #   Token authentication    #
+    #############################
+    def addAPIUser(_user, _password):
+        ret = False
+        if not APIUsers.existsUserByName(_user):
+            hashed_passwd = generate_password_hash(_password, method='sha256')
+            APIUsers.addUser(str(uuid.uuid4()), _user, hashed_passwd)
+            ret = True
+
+        return ret
+
+    def getAllAPIUsers():
+        users = APIUsers.getAllUsers()
+        output = []
+
+        for user in users:
+            user_data = {'public_id':user._public_id, 'username':user._name, 'password':user._password}
+            output.append(user_data)
+
+        return jsonify(apiusers=output)
+
+    def getAPIUser(_public_id):
+        user = APIUsers.getUserByPublicID(_public_id)
+
+        if not user:
+            return jsonify(message="No user found.")
+        
+        user_data = {'public_id':user._public_id, 'username':user._name, 'password':user._password}
+
+        return jsonify(user=user_data)
+
+    def deleteAPIUser(_public_id):
+        if not APIUsers.existsUserByPublicID(_public_id):
+            return jsonify(message="No user found.")
+
+        APIUsers.deleteUser(_public_id)
+
+        return jsonify(message="User deleted.")
+
+    def login(username, password):
+        if not APIUsers.existsUserByName(username):
+            return jsonify(message="No user found.")
+
+        user = APIUsers.getUserByName(username)
+
+        if check_password_hash(user._password, password):
+            token = jwt.encode({'public_id' : user._public_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=20)}, os.environ['SECRET_KEY'])
+            return jsonify(token=token.decode('UTF-8'))
+
+        return jsonify(message="Could not verify.")
+
+    def tokenAccess(token):
+        try:
+            data = jwt.decode(token, os.environ['SECRET_KEY'])
+            return APIUsers.getUserByPublicID(data['public_id'])
+        except:
+            return None

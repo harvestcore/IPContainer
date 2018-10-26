@@ -57,6 +57,7 @@ Más info:
 - [**Base de datos**](doc/bd.md)
 - [**Despliegue en Heroku**](doc/heroku.md)
 - [**Despliegue en Microsoft Azure**](doc/azure.md)
+- **[Archivo de configuración de TravisCI](.travis.yml)**
 
 
 

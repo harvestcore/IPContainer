@@ -12,8 +12,6 @@ def token_requiered(f):
 
         if 'x-access-token' in request.headers:
             token = request.headers['x-access-token']
-        else:
-            return jsonify(message="Token error."), 401
 
         if not token:
             return jsonify(message="Token is missing."), 401

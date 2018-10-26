@@ -28,7 +28,7 @@ def token_requiered(f):
 
 @app.route("/", methods=['GET'])
 def index():
-    return jsonify({'status':'OK'})
+    return json.dumps({'status':'OK'})
 
 @app.route("/status", methods=['GET'])
 def status():

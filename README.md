@@ -71,7 +71,7 @@ Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro co
 
 Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD en [db4free](https://www.db4free.net/). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
 
-
+[!] Finalmente los tests con la BD en [db4free](https://www.db4free.net/) están implementados en este repositorio. Por otro lado no ha sido necesario utilizar docker para los mismos.
 
 ## Pasos a seguir en el desarrollo de IPContainer
 

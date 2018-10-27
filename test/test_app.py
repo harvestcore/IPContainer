@@ -49,15 +49,24 @@ class testIPContainer(unittest.TestCase):
     def test_i_elimina_ip_de_red_existente(self):
         self.assertEqual(IPContainer.removeIPfromNetwork("test_user1", "dns", "5.5.5.5"), True, "IP borrada de la red existente")
 
-    def test_j_comprobar_numero_usuarios(self):
+    def test_j_elimina_ip_de_red_no_existente(self):
+        self.assertEqual(IPContainer.removeIPfromNetwork("test_user1", "pan", "5.5.5.5"), False, "IP borrada de la red no existente")
+
+    def test_k_comprobar_numero_usuarios(self):
         self.assertEqual(IPContainer.getNumberOfUsers(), 1, "Numero de usuarios correcto. (1)")
         IPContainer.addUser("test_user3")
         self.assertEqual(IPContainer.getNumberOfUsers(), 2, "Numero de usuarios correcto. (2)")
 
-    def test_k_comprobar_numero_redes(self):
+    def test_l_comprobar_numero_redes(self):
         self.assertEqual(IPContainer.getNumberOfNetworks(), 1, "1 - Numero de redes correcto. (1)")
         IPContainer.createNetwork("test_user3", "wlan")
         self.assertEqual(IPContainer.getNumberOfNetworks(), 2, "2 - Numero de redes correcto. (2)")
+
+    def test_m_vaciar_tablas(self):
+        IPContainer._dropUsers()
+        self.assertEqual(IPContainer.getNumberOfUsers(), 0, "Tabla usuarios vaciada.")
+        IPContainer._dropData()
+        self.assertEqual(IPContainer.getNumberOfUsers(), 0, "Tabla datos vaciada.")
 
 if __name__ == '__main__':
 	unittest.main()

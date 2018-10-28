@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ipc:
+    image: python:3
+    build: ./IPContainer
+    volumes:
+        - ./IPContainer:/usr/src/app
+    environment:
+      MYSQL_KEY: $(MYSQL_KEY)
+    # ports:
+    #   - "127.0.0.1:5432:5432"

@@ -7,8 +7,8 @@
 
 
 - [Despliegue Heroku](https://ipcontainer.herokuapp.com/)
-
-- [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
+- `Inactivo` [Despliegue OpenShift]()
+- `Inactivo` [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
 
 
 
@@ -59,6 +59,7 @@ Más info:
 - [**Base de datos**](doc/bd.md)
 - [**Despliegue en Heroku**](doc/heroku.md)
 - [**Despliegue en Microsoft Azure**](doc/azure.md)
+- [**Despliegue en OpenShift**](doc/openshift.md)
 - **[Archivo de configuración de TravisCI](.travis.yml)**
 
 

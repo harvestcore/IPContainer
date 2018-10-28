@@ -33,10 +33,10 @@ La idea surge tras necesitar un lugar donde tener una serie de direcciones IP or
 
 Más info:
 
-- [Documentación](#doc)
+- [**Documentación**](#doc)
 
-- [Web del proyecto](https://harvestcore.github.io/es/ipcontainer/index.html)
-- [Web del repositorio](https://harvestcore.github.io/IPContainer)
+- [**Web del proyecto**](https://harvestcore.github.io/es/ipcontainer/index.html)
+- [**Web del repositorio**](https://harvestcore.github.io/IPContainer)
 
 
 
@@ -50,7 +50,7 @@ Más info:
 - [**Heroku**](https://www.heroku.com/): Como PaaS.
 - [**Microsoft Azure**](https://azure.microsoft.com/es-es/): Como PaaS.
 
-<div id='doc' />
+<div id='doc'>
 
 ## Documentación:
 
@@ -60,9 +60,12 @@ Más info:
 - [**Despliegue en Heroku**](doc/heroku.md)
 - [**Despliegue en Microsoft Azure**](doc/azure.md)
 - [**Despliegue en OpenShift**](doc/openshift.md)
-- **[Archivo de configuración de TravisCI](.travis.yml)**
+- [**Archivo de configuración de TravisCI**](.travis.yml)
 
 
+## Varios
+
+- [**Repositorio en DockerHub**](https://hub.docker.com/r/harvestcore/ipcontainer)
 
 ## Test News
 
@@ -78,7 +81,6 @@ Debido a que el microservicio necesita una base de datos estoy probando una seri
 Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro con Python. El segundo se conecta al primero para acceder a los datos. El repositorio *IPContainer2* contiene una versión más actualizada de este mismo repositorio. Cuando los contenedores y el sistema de test esté perfectamente comprobado y funcionando lo implementaré en este repositorio.
 
 Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD en [db4free](https://www.db4free.net/). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
-
 
 
 ## Pasos a seguir en el desarrollo de IPContainer

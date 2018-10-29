@@ -1,5 +1,6 @@
 ### .env docker-compose ###
 keys.env
+.env
 
 ### BD Config ###
 config.py

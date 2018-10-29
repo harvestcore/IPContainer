@@ -1,11 +1,14 @@
 version: '3'
 services:
   ipcontainer:
-    image: python:3.6
     build: .
     volumes:
       - .:.
     env_file:
-      - keys.env
+      - .env
+    environment:
+      - MYSQL_KEY= ${MYSQL_KEY}
+      - SECRET_KEY=${SECRET_KEY}
     ports:
       - 5001:5000
+    command: python3 application.py

@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.com/harvestcore/IPContainer.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer)
 
+[![Documentation Status](https://readthedocs.org/projects/ipcontainer/badge/?version=latest)](https://ipcontainer.readthedocs.io/en/latest/?badge=latest)
 
 
 - [Despliegue Heroku](https://ipcontainer.herokuapp.com/)
@@ -53,12 +54,15 @@ Más info:
 
 ## Documentación:
 
-- [**API**](doc/api.md)
-- [**Autenticación con token**](doc/auth.md)
-- [**Base de datos**](doc/bd.md)
-- [**Despliegue en Heroku**](doc/heroku.md)
-- [**Despliegue en Microsoft Azure**](doc/azure.md)
-- [**Despliegue en OpenShift**](doc/openshift.md)
+- [**ReadTheDocs**](https://ipcontainer.readthedocs.io)
+
+
+- [**API**](docs/api.md)
+- [**Autenticación con token**](docs/auth.md)
+- [**Base de datos**](docs/bd.md)
+- [**Despliegue en Heroku**](docs/heroku.md)
+- [**Despliegue en Microsoft Azure**](docs/azure.md)
+- [**Despliegue en OpenShift**](docs/openshift.md)
 - [**Archivo de configuración de TravisCI**](.travis.yml)
 
 

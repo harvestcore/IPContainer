@@ -119,11 +119,9 @@ class IPContainer():
         return json.dumps(djson)
 
     def getStatus():
-        types = ['dns', 'wlan', 'vlan', 'pan', 'lan', 'san', 'wan']
         networks = {'dns':Data.countType('dns'), 'wlan':Data.countType('wlan'), 'vlan':Data.countType('vlan'), 'pan':Data.countType('pan'), 'lan':Data.countType('lan'), 'wan':Data.countType('wan'), 'san':Data.countType('san')}
-        djson = {'status':'OK', 'users':IPContainer.getNumberOfUsers(), 'noofnetworks':IPContainer.getNumberOfNetworks(), 'networks':networks}
-
-        return json.dumps(djson)
+        
+        return jsonify(status='OK', noofusers=IPContainer.getNumberOfUsers(), noofnetworks=IPContainer.getNumberOfNetworks(), networks=networks)
 
     def _dropUsers():
         Users._dropTable()

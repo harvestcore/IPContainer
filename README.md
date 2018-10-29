@@ -55,8 +55,6 @@ Más info:
 ## Documentación:
 
 - [**ReadTheDocs**](https://ipcontainer.readthedocs.io)
-
-
 - [**API**](docs/api.md)
 - [**Autenticación con token**](docs/auth.md)
 - [**Base de datos**](docs/bd.md)

@@ -55,6 +55,7 @@ Más info:
 - [**API**](docs/api.md)
 - [**Autenticación con token**](docs/auth.md)
 - [**Base de datos**](docs/bd.md)
+- [**Instalación**](docs/install.md)
 - [**Despliegue en Heroku**](docs/heroku.md)
 - [**Despliegue en Microsoft Azure**](docs/azure.md)
 - [**Despliegue en OpenShift**](docs/openshift.md)

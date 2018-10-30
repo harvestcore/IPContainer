@@ -1,3 +1,3 @@
-# Despliegue en Heroku
+# Despliegue en OpenShift
 
 *TODO*

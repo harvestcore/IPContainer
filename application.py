@@ -99,12 +99,12 @@ def getData(current_user, user, _type):
 def statusUser(current_user, user):
     return IPContainer.getAllData(str(user))
 
-@app.route("/_dropUsers", methods=['GET'])
+@app.route("/dropUsers", methods=['DELETE'])
 @token_requiered
 def _dropUsers(current_user):
     IPContainer._dropUsers()
 
-@app.route("/_dropData", methods=['GET'])
+@app.route("/dropData", methods=['DELETE'])
 @token_requiered
 def _dropData(current_user):
     IPContainer._dropData()

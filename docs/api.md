@@ -17,7 +17,7 @@
 |  POST  | /removeUser/`user` | Nombre de usuario. | {"success":`boolean`} |       Elimina un usuario.       |
 |  GET   | /getNumberOfUsers  |         -          |    {"users":`int`}    | Consulta el número de usuarios. |
 |  GET   | /existsUser/`user` | Nombre de usuario. | {"exists":`boolean`}  | Comprueba si existe un usuario. |
-|  GET   |    /_dropUsers     |         -          | {"success":`boolean`} |   Elimina todos los usuarios.   |
+|  DELETE   |    /dropUsers     |         -          | - |   Elimina todos los usuarios.   |
 
 
 
@@ -33,7 +33,7 @@
 |  GET   |      /existsNetwork/`user`/`type`       |        Nombre de usuario. Tipo de red.         | {"exists":`boolean`}  |                 Comprueba si existe una red.                 |
 |  GET   |      /getNetworkSize/`user`/`type`      |        Nombre de usuario. Tipo de red.         |   {"size":"`int`"}    |    Devuelve el tamaño de la red de tipo `type` de `user`.    |
 |  GET   |         /getData/`user`/`type`          |        Nombre de usuario. Tipo de red.         |      {"data":[]}      | Devuelve todas las IP asociadas a la red de tipo `type` de `user`. |
-|  GET   |               /_dropData                |                       -                        | {"success":`boolean`} |                   Elimina todas las redes.                   |
+|  DELETE   |               /dropData                |                       -                        | - |                   Elimina todas las redes.                   |
 
 
 

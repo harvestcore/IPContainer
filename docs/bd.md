@@ -50,11 +50,3 @@ Para realizar los tests (ya obsoletos) de forma local he utilizado la siguiente 
       "data": []
   }
   ```
-
-
-
-
-
-
-
-

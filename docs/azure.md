@@ -21,4 +21,4 @@
 
 5. Compruebo que el microservicio está desplegado.
 
-![worksazure](/home/angel/Dropbox/Universidad/4-Cuarto/Primer cuatri/IV/Proyecto/doc/img/worksazure.png)
+![worksazure](img/worksazure.png)

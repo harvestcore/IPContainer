@@ -1,11 +1,14 @@
 version: '3'
 services:
-  ipc:
-    image: python:3
-    build: ./IPContainer
+  ipcontainer:
+    build: .
     volumes:
-        - ./IPContainer:/usr/src/app
+      - .:.
+    env_file:
+      - .env
     environment:
-      MYSQL_KEY: $(MYSQL_KEY)
-    # ports:
-    #   - "127.0.0.1:5432:5432"
+      - MYSQL_KEY= ${MYSQL_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+    ports:
+      - 5001:5000
+    command: python3 application.py

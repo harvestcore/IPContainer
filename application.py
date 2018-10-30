@@ -103,11 +103,13 @@ def statusUser(current_user, user):
 @token_requiered
 def _dropUsers(current_user):
     IPContainer._dropUsers()
+    return jsonify(success=True)
 
 @app.route("/dropData", methods=['DELETE'])
 @token_requiered
 def _dropData(current_user):
     IPContainer._dropData()
+    return jsonify(success=True)
 
 #############################
 #   Token authentication    #

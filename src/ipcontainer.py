@@ -149,7 +149,7 @@ class IPContainer():
             user_data = {'public_id':user._public_id, 'username':user._name, 'password':user._password}
             output.append(user_data)
 
-        return jsonify(apiusers=output)
+        return jsonify(apiusers=output, noofusers=len(output))
 
     def getAPIUser(_public_id):
         user = APIUsers.getUserByPublicID(_public_id)

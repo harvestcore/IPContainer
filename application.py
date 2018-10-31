@@ -78,7 +78,7 @@ def removeNetwork(current_user, user, _type):
 @token_requiered
 def addIPtoNetwork(current_user, user, _type):
     js = request.get_json()
-    return jsonify(success=IPContainer.addIPtoNetwork(str(user), str(_type), js['data'])
+    return jsonify(success=IPContainer.addIPtoNetwork(str(user), str(_type), js['data']))
     
 @app.route("/removeIPfromNetwork/<user>/<_type>/<ip>", methods=['DELETE'])
 @token_requiered

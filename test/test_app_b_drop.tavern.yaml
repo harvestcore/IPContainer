@@ -1,0 +1,38 @@
+---       ### TEST DROP
+
+test_name: Tests drop tablas
+stages:
+  - name: Login - Tests drop tablas
+    request:
+      url: https://ipcontainer.herokuapp.com/login
+      method: GET
+      auth:
+        - angel   # user
+        - angel   # pass
+    response:
+      status_code: 200
+      save:
+        body:
+          test_token: token
+
+  - name: test /dropUsers - Tests drop tablas
+    request:
+      url: https://ipcontainer.herokuapp.com/dropUsers
+      method: DELETE
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        success: True
+
+  - name: test /dropData - Tests drop tablas
+    request:
+      url: https://ipcontainer.herokuapp.com/dropData
+      method: DELETE
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        success: True

@@ -51,7 +51,7 @@ def getNumberOfUsers(current_user):
 
 @app.route("/existsUser/<user>", methods=['GET'])
 @token_requiered
-def existUser(current_user, user, _type):
+def existUser(current_user, user):
     return jsonify(exists=IPContainer.existUser(str(user)))
 
 @app.route("/getNumberOfNetworks", methods=['GET'])

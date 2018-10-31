@@ -1,13 +1,57 @@
+---     ### TEST AUTH
+
+test_name: Test /login (fail)
+stages:
+  - name: Compruebo que no hace login sin user ni pass
+    request:
+      url: https://ipcontainer.herokuapp.com/login
+      method: GET
+    response:
+      status_code: 401
+
 ---
+
+test_name: Tests /APIUser
+stages:
+  - name: Compruebo que hace login y devuelve token
+    request:
+      url: https://ipcontainer.herokuapp.com/login
+      method: GET
+      auth:
+        - angel   # user
+        - angel   # pass
+    response:
+      status_code: 200
+      save:
+        body:
+          test_token: token
+
+  - name: Compruebo que devuelve 401 si no le paso token
+    request:
+      url: https://ipcontainer.herokuapp.com/APIUser
+      method: GET
+    response:
+      status_code: 401
+
+  - name: Compruebo el numero de usuarios.
+    request:
+      url: https://ipcontainer.herokuapp.com/APIUser
+      method: GET
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      # body:
+      #   noofusers: 4
+
+---     ### TEST IPCONTAINER
 
 test_name: Test /
 stages:
   - name: Compruebo status
-
     request:
       url: https://ipcontainer.herokuapp.com/
       method: GET
-
     response:
       status_code: 200
       body:
@@ -18,70 +62,268 @@ stages:
 test_name: Test /status
 stages:
   - name: Compruebo status, usuarios y demás
-
     request:
       url: https://ipcontainer.herokuapp.com/status
       method: GET
-
     response:
       status_code: 200
       body:
         status: "OK"
-        noofnetworks: 0
-        noofusers: 0
-        networks: {
-          dns: 0,
-          lan: 0,
-          pan: 0,
-          san: 0,
-          vlan: 0,
-          wlan: 0,
-          wan: 0
-        }
+        networks: {}
 
 ---
 
-test_name: Test /login (fail)
+test_name: Tests drop tablas
 stages:
-  - name: Compruebo que no hace login sin user ni pass
-
-    request:
-      url: https://ipcontainer.herokuapp.com/login
-      method: GET
-
-    response:
-      status_code: 401
-
----
-
-test_name: Test /login
-stages:
-  - name: Compruebo que hace login y devuelve token
-
+  - name: Login
     request:
       url: https://ipcontainer.herokuapp.com/login
       method: GET
       auth:
         - angel   # user
         - angel   # pass
-
     response:
       status_code: 200
-
       save:
         body:
           test_token: token
 
-
-  - name: Compruebo el numero de usuarios.
-
+  - name: test /dropUsers
     request:
-      url: https://ipcontainer.herokuapp.com/APIUser
-      method: GET
+      url: https://ipcontainer.herokuapp.com/dropUsers
+      method: DELETE
       headers:
         x-access-token: "{test_token}"
-
     response:
       status_code: 200
       body:
-        noofusers: 4
+        success: True
+
+  - name: test /dropData
+    request:
+      url: https://ipcontainer.herokuapp.com/dropData
+      method: DELETE
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        success: True
+
+---
+
+test_name: Tests agregar usuarios
+stages:
+  - name: Login
+    request:
+      url: https://ipcontainer.herokuapp.com/login
+      method: GET
+      auth:
+        - angel   # user
+        - angel   # pass
+    response:
+      status_code: 200
+      save:
+        body:
+          test_token: token
+
+  - name: test /addUser/test1
+    request:
+      url: https://ipcontainer.herokuapp.com/addUser/test1
+      method: POST
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        success: True
+
+  - name: test /addUser/test2
+    request:
+      url: https://ipcontainer.herokuapp.com/addUser/test2
+      method: POST
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        success: True
+
+  - name: test /getNumberOfUsers
+    request:
+      url: https://ipcontainer.herokuapp.com/getNumberOfUsers
+      method: GET
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        users: 2
+
+  - name: test /existsUser/test1
+    request:
+      url: https://ipcontainer.herokuapp.com/existsUser/test1
+      method: GET
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        exists: True
+
+  - name: test /existsUser/test2
+    request:
+      url: https://ipcontainer.herokuapp.com/existsUser/test2
+      method: GET
+      headers:
+        x-access-token: "{test_token}"
+    response:
+      status_code: 200
+      body:
+        exists: True
+
+# ---
+
+# test_name: Tests eliminar usuario
+# stages:
+#   - name: Login
+#     request:
+#       url: https://ipcontainer.herokuapp.com/login
+#       method: GET
+#       auth:
+#         - angel   # user
+#         - angel   # pass
+#     response:
+#       status_code: 200
+#       save:
+#         body:
+#           test_token: token
+
+#   - name: test /removeUser/test2
+#     request:
+#       url: https://ipcontainer.herokuapp.com/removeUser/test2
+#       method: GET
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         success: True
+
+#   - name: test /existsUser/test2
+#     request:
+#       url: https://ipcontainer.herokuapp.com/existsUser/test2
+#       method: GET
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         exists: False
+
+#   - name: test /getNumberOfUsers
+#     request:
+#       url: https://ipcontainer.herokuapp.com/getNumberOfUsers
+#       method: GET
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         users: 1
+
+# ---
+
+# test_name: Tests eliminar usuario que no existe
+# stages:
+#   - name: Login
+#     request:
+#       url: https://ipcontainer.herokuapp.com/login
+#       method: GET
+#       auth:
+#         - angel   # user
+#         - angel   # pass
+#     response:
+#       status_code: 200
+#       save:
+#         body:
+#           test_token: token
+
+#   - name: test /removeUser/test8
+#     request:
+#       url: https://ipcontainer.herokuapp.com/removeUser/test8
+#       method: GET
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         success: False
+
+# ---
+
+# test_name: Tests crear red
+# stages:
+#   - name: Login
+#     request:
+#       url: https://ipcontainer.herokuapp.com/login
+#       method: GET
+#       auth:
+#         - angel   # user
+#         - angel   # pass
+#     response:
+#       status_code: 200
+#       save:
+#         body:
+#           test_token: token
+
+#   - name: test /createNetwork/test1/dns
+#     request:
+#       url: https://ipcontainer.herokuapp.com/createNetwork/test1/dns
+#       method: POST
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         success: True
+
+#   - name: test /existsNetwork/test1/dns
+#     request:
+#       url: https://ipcontainer.herokuapp.com/existsNetwork/test1/dns
+#       method: GET
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         exists: True
+
+# ---
+
+# test_name: Tests crear red ya existente
+# stages:
+#   - name: Login
+#     request:
+#       url: https://ipcontainer.herokuapp.com/login
+#       method: GET
+#       auth:
+#         - angel   # user
+#         - angel   # pass
+#     response:
+#       status_code: 200
+#       save:
+#         body:
+#           test_token: token
+
+#   - name: test /createNetwork/test1/dns
+#     request:
+#       url: https://ipcontainer.herokuapp.com/createNetwork/test1/dns
+#       method: POST
+#       headers:
+#         x-access-token: "{test_token}"
+#     response:
+#       status_code: 200
+#       body:
+#         success: False
+

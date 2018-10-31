@@ -39,7 +39,7 @@ def status():
 def addUser(current_user, user):
     return jsonify(success=IPContainer.addUser(str(user)))
 
-@app.route("/removeUser/<user>", methods=['POST'])
+@app.route("/removeUser/<user>", methods=['DELETE'])
 @token_requiered
 def removeUser(current_user, user):
     return jsonify(success=IPContainer.removeUser(str(user)))
@@ -69,7 +69,7 @@ def existNetwork(current_user, user, _type):
 def createNetwork(current_user, user, _type):
     return jsonify(success=IPContainer.createNetwork(str(user), str(_type)))
 
-@app.route("/removeNetwork/<user>/<_type>", methods=['POST'])
+@app.route("/removeNetwork/<user>/<_type>", methods=['DELETE'])
 @token_requiered
 def removeNetwork(current_user, user, _type):
     return jsonify(success=IPContainer.removeNetwork(str(user), str(_type)))
@@ -79,7 +79,7 @@ def removeNetwork(current_user, user, _type):
 def addIPtoNetwork(current_user, user, _type, ip):
     return jsonify(success=IPContainer.addIPtoNetwork(str(user), str(_type), str(ip)))
     
-@app.route("/removeIPfromNetwork/<user>/<_type>/<ip>", methods=['POST'])
+@app.route("/removeIPfromNetwork/<user>/<_type>/<ip>", methods=['DELETE'])
 @token_requiered
 def removeIPfromNetwork(current_user, user, _type, ip):
     return jsonify(success=IPContainer.removeIPfromNetwork(str(user), str(_type), str(ip)))

@@ -14,7 +14,7 @@
 | Método |        URI         |     Parámetros     |        Return         |             Función             |
 | :----: | :----------------: | :----------------: | :-------------------: | :-----------------------------: |
 |  POST  |  /addUser/`user`   | Nombre de usuario. | {"success":`boolean`} |       Agrega un usuario.        |
-|  POST  | /removeUser/`user` | Nombre de usuario. | {"success":`boolean`} |       Elimina un usuario.       |
+|  DELETE  | /removeUser/`user` | Nombre de usuario. | {"success":`boolean`} |       Elimina un usuario.       |
 |  GET   | /getNumberOfUsers  |         -          |    {"users":`int`}    | Consulta el número de usuarios. |
 |  GET   | /existsUser/`user` | Nombre de usuario. | {"exists":`boolean`}  | Comprueba si existe un usuario. |
 |  DELETE   |    /dropUsers     |         -          | - |   Elimina todos los usuarios.   |
@@ -26,9 +26,9 @@
 | Método |                   URI                   |                   Parámetros                   |        Return         |                           Función                            |
 | :----: | :-------------------------------------: | :--------------------------------------------: | :-------------------: | :----------------------------------------------------------: |
 |  POST  |      /createNetwork/`user`/`type`       |        Nombre de usuario. Tipo de red.         | {"success":`boolean`} |        Crea una nueva red para `user` de tipo `type`.        |
-|  POST  |      /removeNetwork/`user`/`type`       |        Nombre de usuario. Tipo de red.         | {"success":`boolean`} |           Elimina la red de `user` de tipo `type`.           |
+|  DELETE  |      /removeNetwork/`user`/`type`       |        Nombre de usuario. Tipo de red.         | {"success":`boolean`} |           Elimina la red de `user` de tipo `type`.           |
 |  POST  |   /addIPtoNetwork/`user`/`type`/`ip`    | Nombre de usuario. Tipo de red. IP a agregar.  | {"success":`boolean`} |     Agrega a la red de tipo `type` de `user` la IP `ip`.     |
-|  POST  | /removeIPfromNetwork/`user`/`type`/`ip` | Nombre de usuario. Tipo de red. IP a eliminar. | {"success":`boolean`} |    Elimina de la red de tipo `type` de `user` la IP `ip`.    |
+|  DELETE  | /removeIPfromNetwork/`user`/`type`/`ip` | Nombre de usuario. Tipo de red. IP a eliminar. | {"success":`boolean`} |    Elimina de la red de tipo `type` de `user` la IP `ip`.    |
 |  GET   |          /getNumberOfNetworks           |                       -                        | {"networks":"`int`"}  |                 Consulta el número de redes.                 |
 |  GET   |      /existsNetwork/`user`/`type`       |        Nombre de usuario. Tipo de red.         | {"exists":`boolean`}  |                 Comprueba si existe una red.                 |
 |  GET   |      /getNetworkSize/`user`/`type`      |        Nombre de usuario. Tipo de red.         |   {"size":"`int`"}    |    Devuelve el tamaño de la red de tipo `type` de `user`.    |

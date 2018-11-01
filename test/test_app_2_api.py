@@ -115,10 +115,10 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['size'], 2, "Red con tamaño 2")
 
-    def test_m_crea_red_ya_existente(self):
-        response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})
-        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-        self.assertEqual(response.json()['success'], False, "Red existente no creada.")
+    # def test_m_crea_red_ya_existente(self):
+    #     response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})
+    #     self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+    #     self.assertEqual(response.json()['success'], False, "Red existente no creada.")
 
 
 if __name__ == '__main__':

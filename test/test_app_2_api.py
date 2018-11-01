@@ -3,9 +3,13 @@ import unittest, json, requests
 from requests import *
 from requests.auth import HTTPBasicAuth
 
-url = 'https://ipcontainer.herokuapp.com'
-username = 'test'
-password = 'test'
+# url = 'https://ipcontainer.herokuapp.com'
+# username = 'test'
+# password = 'test'
+
+url = 'http://localhost:5000'
+username = 'testuser'
+password = 'testuser'
 
 login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
 token = login.json()['token']
@@ -95,12 +99,7 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['exists'], True, "La red existe")
 
-    def test_l_crea_red_ya_existente(self):
-        response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})
-        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-        self.assertEqual(response.json()['success'], False, "Red existente no creada.")
-
-    def test_m_agrega_ip_a_red_existente(self):
+    def test_l_agrega_ip_a_red_existente(self):
         ip = {'data':{'dns1':'5.5.5.5', 'dns2':'5.5.5.5', 'nombre':'test'}}
         ip2 = {'data':{'dns1':'10.10.10.10', 'dns2':'10.10.10.10', 'nombre':'test2'}}
 
@@ -115,6 +114,11 @@ class testAPI(unittest.TestCase):
         response = requests.get(url + '/getNetworkSize/user1/dns', headers={'x-access-token':token})
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['size'], 2, "Red con tamaño 2")
+
+    def test_m_crea_red_ya_existente(self):
+        response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+        self.assertEqual(response.json()['success'], False, "Red existente no creada.")
 
 
 if __name__ == '__main__':

@@ -3,13 +3,13 @@ import unittest, json, requests
 from requests import *
 from requests.auth import HTTPBasicAuth
 
-# url = 'https://ipcontainer.herokuapp.com'
-# username = 'test'
-# password = 'test'
+url = 'https://ipcontainer.herokuapp.com'
+username = 'test'
+password = 'test'
 
-url = 'http://localhost:5000'
-username = 'testuser'
-password = 'testuser'
+# url = 'http://localhost:5000'
+# username = 'testuser'
+# password = 'testuser'
 
 login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
 token = login.json()['token']

@@ -148,4 +148,4 @@ def login():
     return IPContainer.login(auth.username, auth.password)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=8080)

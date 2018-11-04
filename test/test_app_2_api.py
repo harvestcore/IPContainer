@@ -99,21 +99,21 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['exists'], True, "La red existe")
 
-    def test_l_agrega_ip_a_red_existente(self):
-        ip = {'data':{'dns1':'5.5.5.5', 'dns2':'5.5.5.5', 'nombre':'test'}}
-        ip2 = {'data':{'dns1':'10.10.10.10', 'dns2':'10.10.10.10', 'nombre':'test2'}}
+    # def test_l_agrega_ip_a_red_existente(self):
+    #     ip = {'data':{'dns1':'5.5.5.5', 'dns2':'5.5.5.5', 'nombre':'test'}}
+    #     ip2 = {'data':{'dns1':'10.10.10.10', 'dns2':'10.10.10.10', 'nombre':'test2'}}
 
-        response = requests.post(url + '/addIPtoNetwork/user1/dns', headers={'x-access-token':token, 'content-type':'application/json'}, json=ip)
-        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-        self.assertEqual(response.json()['success'], True, "IP 1 agregada a la red existente.")
+    #     response = requests.post(url + '/addIPtoNetwork/user1/dns', headers={'x-access-token':token, 'content-type':'application/json'}, json=ip)
+    #     self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+    #     self.assertEqual(response.json()['success'], True, "IP 1 agregada a la red existente.")
 
-        response = requests.post(url + '/addIPtoNetwork/user1/dns', headers={'x-access-token':token, 'content-type':'application/json'}, json=ip2)
-        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-        self.assertEqual(response.json()['success'], True, "IP 2 agregada a la red existente.")
+    #     response = requests.post(url + '/addIPtoNetwork/user1/dns', headers={'x-access-token':token, 'content-type':'application/json'}, json=ip2)
+    #     self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+    #     self.assertEqual(response.json()['success'], True, "IP 2 agregada a la red existente.")
 
-        response = requests.get(url + '/getNetworkSize/user1/dns', headers={'x-access-token':token})
-        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-        self.assertEqual(response.json()['size'], 2, "Red con tamaño 2")
+    #     response = requests.get(url + '/getNetworkSize/user1/dns', headers={'x-access-token':token})
+    #     self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+    #     self.assertEqual(response.json()['size'], 2, "Red con tamaño 2")
 
     # def test_m_crea_red_ya_existente(self):
     #     response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})

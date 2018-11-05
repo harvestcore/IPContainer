@@ -39,7 +39,6 @@ class testAPI(unittest.TestCase):
 
     def test_e_devuelve_lista_usuarios_api(self):
         login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
-        token = login.json()['token']
         response = requests.get(url + '/APIUser', headers={'x-access-token':token})
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertIsInstance(response.json()['apiusers'], list, "Devuelve lista de usuarios.")

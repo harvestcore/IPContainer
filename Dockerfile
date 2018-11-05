@@ -1,6 +1,8 @@
 FROM python:3.6
 
-COPY . .
+COPY . ./ipc
 
 RUN pip install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN cd ./ipc && pip3 install -r requirements.txt
+
+ENTRYPOINT cd ./ipc && python3 application.py

@@ -3,12 +3,9 @@ services:
   ipcontainer:
     build: .
     volumes:
-      - .:.
+      - .:./ipc
     env_file:
-      - .env
-    environment:
-      - MYSQL_KEY= ${MYSQL_KEY}
-      - SECRET_KEY=${SECRET_KEY}
+      - ./envvar.env
     ports:
       - 5001:5000
-    command: python3 application.py
+    # command: python3 application.py

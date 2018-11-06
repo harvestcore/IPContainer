@@ -119,24 +119,36 @@ def _dropData(current_user):
 @app.route("/APIUser", methods=['POST'])
 @token_requiered
 def addAPIUser(current_user):
-    data = request.get_json()
-    done = IPContainer.addAPIUser(data['username'], data['password'])
-    return jsonify(success=done)
+    if current_user._admin:
+        data = request.get_json()
+        done = IPContainer.addAPIUser(data['username'], data['password'])
+        return jsonify(success=done)
+
+    return jsonify(message="You're not an admin.")
     
 @app.route("/APIUser", methods=['GET'])
 @token_requiered
 def getAllAPIUsers(current_user):
-    return IPContainer.getAllAPIUsers()
+    if current_user._admin:
+        return IPContainer.getAllAPIUsers()
+
+    return jsonify(message="You're not an admin.")
 
 @app.route("/APIUser/<public_id>", methods=['GET'])
 @token_requiered
 def getAPIUser(current_user, public_id):
-    return IPContainer.getAPIUser(public_id)
+    if current_user._admin:
+        return IPContainer.getAPIUser(public_id)
+    
+    return jsonify(message="You're not an admin.")
 
 @app.route("/APIUser/<public_id>", methods=['DELETE'])
 @token_requiered
 def deleteAPIUser(current_user, public_id):
-    return IPContainer.deleteAPIUser(public_id)
+    if current_user._admin:
+        return IPContainer.deleteAPIUser(public_id)
+
+    return jsonify(message="You're not an admin.")
 
 @app.route("/login", methods=['GET'])
 def login():

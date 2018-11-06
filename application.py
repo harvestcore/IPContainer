@@ -104,14 +104,20 @@ def statusUser(current_user, user):
 @app.route("/dropUsers", methods=['DELETE'])
 @token_requiered
 def _dropUsers(current_user):
-    IPContainer._dropUsers()
-    return jsonify(success=True)
+    if current_user._admin:
+        IPContainer._dropUsers()
+        return jsonify(success=True)
+
+    return jsonify(message="You're not an admin.")
 
 @app.route("/dropData", methods=['DELETE'])
 @token_requiered
 def _dropData(current_user):
-    IPContainer._dropData()
-    return jsonify(success=True)
+    if current_user._admin:
+        IPContainer._dropData()
+        return jsonify(success=True)
+
+    return jsonify(message="You're not an admin.")
 
 #############################
 #   Token authentication    #

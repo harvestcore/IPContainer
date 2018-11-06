@@ -129,6 +129,13 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['size'], 1, "Red con tamaño 1")
 
+    def test_z_finaliza_vaciando_tablas(self):
+        response = requests.delete(url + '/dropUsers', headers={'x-access-token':token})
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+        self.assertEqual(response.json()['success'], True, "Vacia usuarios")
+        response = requests.delete(url + '/dropData', headers={'x-access-token':token})
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
+        self.assertEqual(response.json()['success'], True, "Vacia datos")
 
 
 if __name__ == '__main__':

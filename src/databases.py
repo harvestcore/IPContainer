@@ -5,6 +5,7 @@ import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MYSQL_KEY']
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ipc.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -15,12 +16,14 @@ class APIUsers(db.Model):
     _id = db.Column('id', db.Integer, primary_key = True, autoincrement=True)
     _public_id = db.Column('public_id', db.String(50))
     _name = db.Column('name', db.String(50))
-    _password = db.Column('password', db.String(50))
+    _password = db.Column('password', db.String(100))
+    _admin = db.Column('admin', db.Boolean)
 
-    def __init__(self, _public_id = "", _name = "", _password = ""):
+    def __init__(self, _public_id = "", _name = "", _password = "", _admin=False):
         self._public_id = _public_id
         self._name = _name
         self._password = _password
+        self._admin = _admin
 
     def existsUserByName(_name):
         return APIUsers.query.filter_by(_name = _name).count() == 1
@@ -28,8 +31,8 @@ class APIUsers(db.Model):
     def existsUserByPublicID(_public_id):
         return APIUsers.query.filter_by(_public_id = _public_id).count() == 1
 
-    def addUser(_public_id, _name, _password):
-        to_insert = APIUsers(_public_id, _name, _password)
+    def addUser(_public_id, _name, _password, _admin):
+        to_insert = APIUsers(_public_id, _name, _password, _admin)
         db.session.add(to_insert)
         db.session.commit()
 
@@ -55,12 +58,12 @@ class Data(db.Model):
     _id = db.Column('id', db.Integer, primary_key = True, autoincrement=True)
     _username = db.Column('username', db.String(128))
     _type = db.Column('type', db.String(4))
-    _data = db.Column('data', db.JSON)
+    _data = db.Column('data', db.String(1000))
 
     def __init__(self, _username = "", _type = "", _data = {'data':[]}):
         self._username = _username
         self._type = _type
-        self._data = _data
+        self._data = json.dumps(_data)
 
     def createNetwork(_username, _type):
         to_insert = Data(_username, _type)
@@ -69,12 +72,12 @@ class Data(db.Model):
 
     def updateData(_username, _type, _data):
         to_update = Data.query.filter_by(_username = _username, _type = _type).first()
-        to_update._data = _data
+        to_update._data = json.dumps(_data)
         db.session.commit()
 
     def getData(_username, _type):
         to_get = Data.query.filter_by(_username = _username, _type = _type).first()
-        return to_get._data
+        return json.loads(to_get._data)
 
     def getAllData(_username):
         to_get = Data.query.filter_by(_username = _username).all()

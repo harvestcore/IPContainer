@@ -114,7 +114,7 @@ class IPContainer():
             data = Data.getAllData(_username)
             djson['noofnetworks'] = len(data)
             for i in range (len(data)):
-                djson['networks'].append({'type':data[i]._type, 'network':data[i]._data})
+                djson['networks'].append({'type':data[i]._type, 'network':json.loads(data[i]._data)})
 
         return json.dumps(djson)
 
@@ -136,7 +136,7 @@ class IPContainer():
         ret = False
         if not APIUsers.existsUserByName(_user):
             hashed_passwd = generate_password_hash(_password, method='sha256')
-            APIUsers.addUser(str(uuid.uuid4()), _user, hashed_passwd)
+            APIUsers.addUser(str(uuid.uuid4()), _user, hashed_passwd, False)
             ret = True
 
         return ret
@@ -179,7 +179,7 @@ class IPContainer():
             token = jwt.encode({'public_id' : user._public_id, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=20)}, os.environ['SECRET_KEY'])
             return jsonify(token=token.decode('UTF-8'))
 
-        return jsonify(message="Could not verify.")
+        return jsonify(message="Could not verifyxd."), 401
 
     def tokenAccess(token):
         try:

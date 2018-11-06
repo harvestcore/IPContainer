@@ -69,7 +69,7 @@ Más info:
 
 ## Test News
 
-[!] Finalmente los tests con la BD en [db4free](https://www.db4free.net/) están implementados en este repositorio. Por otro lado no ha sido necesario utilizar docker para los mismos.
+[!] Finalmente los tests con la BD en [freemysqlhosting.net](https://freemysqlhosting.net) están implementados en este repositorio. Por otro lado no ha sido necesario utilizar docker para los mismos.
 
 -----
 
@@ -80,7 +80,7 @@ Debido a que el microservicio necesita una base de datos estoy probando una seri
 
 Resumiendo: Levanto dos contenedores Docker, uno con una BD (MySQL) y el otro con Python. El segundo se conecta al primero para acceder a los datos. El repositorio *IPContainer2* contiene una versión más actualizada de este mismo repositorio. Cuando los contenedores y el sistema de test esté perfectamente comprobado y funcionando lo implementaré en este repositorio.
 
-Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD en [db4free](https://www.db4free.net/). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
+Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD en [freemysqlhosting.net](https://freemysqlhosting.net). Aunque la latencia no es la mejor, para probar el microservicio pienso que es más que suficiente.
 
 
 ## Pasos a seguir en el desarrollo de IPContainer

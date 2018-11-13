@@ -121,7 +121,7 @@ class IPContainer():
     def getStatus():
         networks = {'dns':Data.countType('dns'), 'wlan':Data.countType('wlan'), 'vlan':Data.countType('vlan'), 'pan':Data.countType('pan'), 'lan':Data.countType('lan'), 'wan':Data.countType('wan'), 'san':Data.countType('san')}
         
-        return jsonify(status='OK', noofusers=IPContainer.getNumberOfUsers(), noofnetworks=IPContainer.getNumberOfNetworks(), networks=networks)
+        return {'status':'OK', 'noofusers':IPContainer.getNumberOfUsers(), 'noofnetworks':IPContainer.getNumberOfNetworks(), 'networks':networks}
 
     def _dropUsers():
         Users._dropTable()

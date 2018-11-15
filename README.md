@@ -8,7 +8,7 @@
 - [Despliegue Heroku](https://ipcontainer.herokuapp.com/)
 - `Inactivo` [Despliegue OpenShift]()
 - `Inactivo` [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
-
+- [Contenedor](https://hub.docker.com/r/harvestcore/ipcontainer)
 
 
 ## ¿Qué es?
@@ -22,7 +22,7 @@ IPContainer es un microservicio centrado en el almacenamiento y gestión básica
 - **VLAN** (Virtual Local Area Network)
 - **WLAN** (Wireles Local Area Network)
 
-Por otro lado permite almacenar direcciones IP de servidores DNS.
+Por otro lado permite almacenar direcciones IP de servidores **DNS**.
 
 
 
@@ -42,7 +42,7 @@ Más info:
 
 - [**Python**](https://www.python.org/): Lenguaje principal de programación.
   - [**Flask**](http://flask.pocoo.org/): Framework principal.
-  - [**SQLAlchemy**](https://www.sqlalchemy.org/): Como [ORM](https://es.wikipedia.org/wiki/Mapeo_objeto-relacional).
+  - [**SQLAlchemy**](https://www.sqlalchemy.org/): Como [**ORM**](https://es.wikipedia.org/wiki/Mapeo_objeto-relacional).
 - [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
 - [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
 - [**Heroku**](https://www.heroku.com/): Como PaaS.
@@ -62,10 +62,6 @@ Más info:
 - [**Archivo de configuración de TravisCI**](.travis.yml)
 - `Inactivo` [**ReadTheDocs**](https://ipcontainer.readthedocs.io)
 
-
-## Varios
-
-- [**Repositorio en DockerHub**](https://hub.docker.com/r/harvestcore/ipcontainer)
 
 ## Test News
 

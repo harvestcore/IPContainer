@@ -1,6 +1,7 @@
 # misc
 _docker-compose.yml
 envvar.env
+Dockerfile
 src/ipc.db
 
 ### .env docker-compose ###

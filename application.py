@@ -167,4 +167,4 @@ def login():
     return IPContainer.login(auth.username, auth.password)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0")

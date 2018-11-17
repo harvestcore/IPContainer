@@ -10,4 +10,4 @@ ENV MYSQL_KEY=
 
 EXPOSE 5000
 
-ENTRYPOINT cd ./ipc && python3 application.py
+CMD cd ./ipc && python3 application.py

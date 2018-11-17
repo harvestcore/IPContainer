@@ -167,5 +167,7 @@ def login():
     return IPContainer.login(auth.username, auth.password)
 
 if __name__ == "__main__":
-    p = os.environ['PORT']
+    if 'PORT' in os.environ: p = os.environ['PORT']
+    else: p = 5000
+
     app.run(host="0.0.0.0", port=p)

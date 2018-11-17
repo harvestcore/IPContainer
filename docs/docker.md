@@ -81,7 +81,9 @@ Debido a que Heroku asigna un puerto arbitrario al contenedor, debemos ejecutar 
 
 ```python
 if __name__ == "__main__":
-    p = os.environ['PORT']
+    if 'PORT' in os.environ: p = os.environ['PORT']
+    else: p = 5000
+
     app.run(host="0.0.0.0", port=p)
 ```
 
@@ -89,7 +91,7 @@ Por otro lado Heroku no tiene en cuenta los `EXPOSE` del *Dockerfile*, por lo qu
 
 ---
 
-Por otro lado, para comprobar el log de la aplicación uso:
+Para comprobar el log de la aplicación uso:
 
 ```bash
 heroku logs -t --app ipcontainer-docker

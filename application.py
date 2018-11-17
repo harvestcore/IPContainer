@@ -1,4 +1,4 @@
-import json
+import json, os
 from flask import Flask, jsonify, request, make_response
 from src.ipcontainer import IPContainer
 from src.routes import routes
@@ -33,7 +33,7 @@ def index():
 
 @app.route("/status", methods=['GET'])
 def status():
-    return jsonify(main=IPContainer.getStatus(), routes=routes())
+    return jsonify(status='OK', main=IPContainer.getStatus(), routes=routes())
 
 @app.route("/addUser/<user>", methods=['POST'])
 @token_requiered
@@ -167,4 +167,5 @@ def login():
     return IPContainer.login(auth.username, auth.password)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    p = os.environ['PORT']
+    app.run(host="0.0.0.0", port=p)

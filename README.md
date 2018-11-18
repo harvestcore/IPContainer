@@ -98,5 +98,5 @@ Por otro lado, he probado una nueva serie de tests (en IPContainer2) con una BD 
 - [x] Integración continua. Tests.
 - [x] Autenticación con token.
 - [x] Despliegue del microservicio en un PaaS.
-- [ ] Despliegue en docker.
+- [x] Despliegue en docker.
 - [ ] Despliegue automático a las plataformas de producción.

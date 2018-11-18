@@ -1,12 +1,6 @@
 # IPContainer
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
-
-[![Build Status](https://travis-ci.com/harvestcore/IPContainer.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://ipcontainer.herokuapp.com/) **GitHub Deploy**
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://ipcontainer-docker.herokuapp.com/) **Docker Deploy**
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://travis-ci.com/harvestcore/IPContainer.svg?branch=master)](https://travis-ci.com/harvestcore/IPContainer) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://ipcontainer.herokuapp.com/) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://ipcontainer-docker.herokuapp.com/)
 
 ---
 

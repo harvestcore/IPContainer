@@ -29,11 +29,11 @@ def token_requiered(f):
 
 @app.route("/", methods=['GET'])
 def index():
-    return jsonify(status='OK')
+    return jsonify(status="OK")
 
 @app.route("/status", methods=['GET'])
 def status():
-    return jsonify(status='OK', main=IPContainer.getStatus(), routes=routes())
+    return jsonify(status="OK", main=IPContainer.getStatus(), routes=routes())
 
 @app.route("/addUser/<user>", methods=['POST'])
 @token_requiered

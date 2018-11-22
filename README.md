@@ -57,10 +57,11 @@ Más info:
 
 ## Documentación:
 
+- [**Instalación**](docs/install.md)
 - [**API**](docs/api.md)
 - [**Autenticación con token**](docs/auth.md)
 - [**Base de datos**](docs/bd.md)
-- [**Instalación**](docs/install.md)
+- [**CI Test**](docs/tests.md)
 - [**Docker (Docker Hub y Heroku)**](docs/docker.md)
 - [**Despliegue en Heroku**](docs/heroku.md)
 - [**Despliegue en Microsoft Azure**](docs/azure.md)

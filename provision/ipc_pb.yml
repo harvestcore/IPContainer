@@ -1,0 +1,32 @@
+---
+- hosts: webservers
+  vars:
+    # http_port: 80
+    # max_clients: 200
+  remote_user: root
+  tasks:
+
+  - name: Creo directorio para el microservicio
+    shell: mkdir /usr/ipc
+
+  - name: Update aptitude
+    apt:
+      update: safe
+
+  - name: Instalar python
+    apt:
+      name: python3.6
+
+  - name: Instalar git
+    apt:
+      name: git
+  
+  - name: Creo entorno virtual
+    shell: 
+    args:
+      chdir: /usr/ipc/
+
+  # instalar dependencias python
+  - pip:
+    requirements:
+      

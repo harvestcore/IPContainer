@@ -10,7 +10,7 @@
 - [Contenedor](https://hub.docker.com/r/harvestcore/ipcontainer)
 
 ### Otros links
-- `Inactivo` [Despliegue OpenShift]()
+- [Despliegue Zeit](https://proyecto-nferyfmstq.now.sh/)
 - `Inactivo` [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
 
 ---
@@ -65,7 +65,7 @@ Más info:
 - [**Docker (Docker Hub y Heroku)**](docs/docker.md)
 - [**Despliegue en Heroku**](docs/heroku.md)
 - [**Despliegue en Microsoft Azure**](docs/azure.md)
-- [**Despliegue en OpenShift**](docs/openshift.md)
+- [**Despliegue en Zeit**](docs/zeit.md)
 - [**Archivo de configuración de TravisCI**](.travis.yml)
 - `Inactivo` [**ReadTheDocs**](https://ipcontainer.readthedocs.io)
 

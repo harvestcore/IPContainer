@@ -3,13 +3,13 @@ import unittest, json, requests, time
 from requests import *
 from requests.auth import HTTPBasicAuth
 
-# url = 'https://ipcontainer-docker.herokuapp.com'
-# username = 'test'
-# password = 'test'
-
-url = 'http://localhost:5000'
+url = 'https://ipcontainer-docker.herokuapp.com'
 username = 'test'
 password = 'test'
+
+# url = 'http://localhost:5000'
+# username = 'test'
+# password = 'test'
 
 login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
 token = login.json()['token']

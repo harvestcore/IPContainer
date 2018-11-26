@@ -35,17 +35,17 @@ def index():
 def status():
     return jsonify(status="OK", main=IPContainer.getStatus(), routes=routes())
 
-@app.route("/addUser/<user>", methods=['POST'])
+@app.route("/User/<user>", methods=['POST'])
 @token_requiered
 def addUser(current_user, user):
     return jsonify(success=IPContainer.addUser(str(user)))
 
-@app.route("/removeUser/<user>", methods=['DELETE'])
+@app.route("/User/<user>", methods=['DELETE'])
 @token_requiered
 def removeUser(current_user, user):
     return jsonify(success=IPContainer.removeUser(str(user)))
 
-@app.route("/getNumberOfUsers", methods=['GET'])
+@app.route("/NOUsers", methods=['GET'])
 @token_requiered
 def getNumberOfUsers(current_user):
     return jsonify(users=IPContainer.getNumberOfUsers())
@@ -55,7 +55,7 @@ def getNumberOfUsers(current_user):
 def existUser(current_user, user):
     return jsonify(exists=IPContainer.existUser(str(user)))
 
-@app.route("/getNumberOfNetworks", methods=['GET'])
+@app.route("/NONetworks", methods=['GET'])
 @token_requiered
 def getNumberOfNetworks(current_user):
     return jsonify(networks=IPContainer.getNumberOfNetworks())
@@ -65,34 +65,34 @@ def getNumberOfNetworks(current_user):
 def existNetwork(current_user, user, _type):
     return jsonify(exists=IPContainer.existNetwork(str(user), str(_type)))
 
-@app.route("/createNetwork/<user>/<_type>", methods=['POST'])
+@app.route("/Network/<user>/<_type>", methods=['POST'])
 @token_requiered
 def createNetwork(current_user, user, _type):
     return jsonify(success=IPContainer.createNetwork(str(user), str(_type)))
 
-@app.route("/removeNetwork/<user>/<_type>", methods=['DELETE'])
+@app.route("/Network/<user>/<_type>", methods=['DELETE'])
 @token_requiered
 def removeNetwork(current_user, user, _type):
     return jsonify(success=IPContainer.removeNetwork(str(user), str(_type)))
 
-@app.route("/addIPtoNetwork/<user>/<_type>", methods=['POST'])
+@app.route("/IPNetwork/<user>/<_type>", methods=['POST'])
 @token_requiered
 def addIPtoNetwork(current_user, user, _type):
     js = request.get_json()
     return jsonify(success=IPContainer.addIPtoNetwork(str(user), str(_type), js['data']))
     
-@app.route("/removeIPfromNetwork/<user>/<_type>", methods=['DELETE'])
+@app.route("/IPNetwork/<user>/<_type>", methods=['DELETE'])
 @token_requiered
 def removeIPfromNetwork(current_user, user, _type):
     js = request.get_json()
     return jsonify(success=IPContainer.removeIPfromNetwork(str(user), str(_type), js['ip']))
 
-@app.route("/getNetworkSize/<user>/<_type>", methods=['GET'])
+@app.route("/SzNetwork/<user>/<_type>", methods=['GET'])
 @token_requiered
 def getNetworkSize(current_user, user, _type):
     return jsonify(user=user, network=_type, size=IPContainer.getNetworkSize(str(user), str(_type)))
 
-@app.route("/getData/<user>/<_type>", methods=['GET'])
+@app.route("/Data/<user>/<_type>", methods=['GET'])
 @token_requiered
 def getData(current_user, user, _type):
     return jsonify(user=user, network=_type, data=IPContainer.getData(str(user), str(_type)))

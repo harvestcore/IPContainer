@@ -7,22 +7,24 @@
 Primero he creado el *Dockerfile*:
 
 ```dockerfile
-FROM python:3.6
+FROM mysql:latest
 
-COPY . ./ipc
+ENV MYSQL_DATABASE ipcdb
+ENV MYSQL_ROOT_PASSWORD root
 
-RUN pip install --upgrade pip
-RUN cd ./ipc && pip3 install -r requirements.txt
+COPY ./ipcdb.sql /docker-entrypoint-initdb.d
+COPY . ipc
 
-ENV SECRET_KEY=
-ENV MYSQL_KEY=
+RUN apt-get update
+RUN apt-get install -y python3-dev python3-pip
+RUN pip3 install -r ipc/requirements.txt
 
 EXPOSE 5000
 
-CMD cd ./ipc && python3 application.py
-```
+WORKDIR ./ipc
 
-Las variables de entorno las oculto por motivos obvios.
+CMD python3 application.py
+```
 
 Para crear la imagen:
 
@@ -36,6 +38,12 @@ Login en Docker y push de la imagen:
 docker login
 docker push harvestcore/ipcontainer
 ```
+
+---
+
+Por otro lado he automatizado la creación de la imagen en DockerHub. Cuando hago un push a este repositorio y cuando los tests finalizan sin errores se construye la imagen de nuevo.
+
+---
 
 Al ejecutar el contenedor se le tiene que pasar como variable de entorno el puerto que usará Flask:
 

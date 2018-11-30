@@ -1,16 +1,13 @@
-FROM mysql:8
+FROM python:3.6
 
-ENV MYSQL_DATABASE ipcdb
-ENV MYSQL_ROOT_PASSWORD root
+COPY . ./ipc
 
-COPY ./ipcdb.sql /docker-entrypoint-initdb.d
-COPY . ipc
+RUN pip install --upgrade pip
+RUN cd ./ipc && pip3 install -r requirements.txt
 
-RUN apt-get update
-RUN apt-get install -y python3-dev python3-pip
-# RUN pip3 install --upgrade pip
-RUN pip3 install -r ipc/requirements.txt
+ENV MYSQL_KEY="mysql+mysqlconnector://sql2264325:yY9*dF2%@sql2.freemysqlhosting.net:3306/sql2264325"
+ENV SECRET_KEY="rQsgiA2EupfZTo7WIBY61CmHMWrUTvRBl6JiITvp1GW2uyP5rhHWEh3KZAb3R2F7"
 
 EXPOSE 5000
 
-# CMD [ "python3", "application.py" ]
+CMD cd ./ipc && python3 application.py

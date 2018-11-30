@@ -4,7 +4,14 @@ import urllib, json
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['MYSQL_KEY']
+
+KEY = ""
+if not os.environ['MYSQL_KEY']:
+    KEY = "mysql+mysqlconnector://root:root@localhost:3306/ipcdb"
+else:
+    KEY = os.environ['MYSQL_KEY']
+
+app.config['SQLALCHEMY_DATABASE_URI'] = KEY
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ipc.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

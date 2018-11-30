@@ -36,6 +36,14 @@ CREATE TABLE `apiusers` (
   `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `apiusers`
+--
+
+INSERT INTO `apiusers` (`id`, `public_id`, `name`, `password`, `admin`) VALUES
+(14, '8099bfa6-870d-4a38-ab38-36dc9ca01e61', 'admin', 'sha256$imEr41xM$b4801b7d1613e9e9b5598152044686b2d91099e2f4c3a2657e5622c156b62ff8', 1),
+(15, '857492eb-c9b9-4943-92be-eda3812b8406', 'test', 'sha256$XJJ6DVGh$e5dd15336f9090a97a5a79e36d5f892b2f644a4943680455438bdf09d6ed3658', 1);
+
 
 -- --------------------------------------------------------
 

@@ -14,6 +14,7 @@ Procfile
 README.md
 Vagrantfile
 src/config.json
+Dockerfile_
 
 ### .env docker-compose ###
 keys.env

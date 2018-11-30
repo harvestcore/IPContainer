@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 KEY = ""
-if not os.environ['MYSQL_KEY']:
+if 'MYSQL_KEY' not in os.environ:
     KEY = "mysql+mysqlconnector://root:root@localhost:3306/ipcdb"
 else:
     KEY = os.environ['MYSQL_KEY']

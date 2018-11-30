@@ -2,7 +2,18 @@
 _docker-compose.yml
 src/ipc.db
 .travis.yml
-ipcdb.sql
+docs/
+provision/
+test/
+despliegue/
+.cache
+.pytest_cache
+AUTHOR
+LICENSE
+Procfile
+README.md
+Vagrantfile
+src/config.json
 
 ### .env docker-compose ###
 keys.env

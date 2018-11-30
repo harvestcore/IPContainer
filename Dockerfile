@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:8
 
 ENV MYSQL_DATABASE ipcdb
 ENV MYSQL_ROOT_PASSWORD root
@@ -13,6 +13,4 @@ RUN pip3 install -r ipc/requirements.txt
 
 EXPOSE 5000
 
-WORKDIR ./ipc
-
-CMD python3 application.py
+# CMD [ "python3", "application.py" ]

@@ -82,6 +82,17 @@ Una vez está subido publico la app:
 heroku container:release web --app ipcontainer-docker
 ```
 
+Además he creado un archivo *heroku.yml* para automatizar el despliegue de la imagen.
+```yaml
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: cd ipc && python3 application.py
+```
+
+El mismo indica que tiene que construir un contenedor para una aplicación web a partir del Dockerfile, además de decirle cómo tiene que ejecutarlo (sustituyendo así el comando CMD del Dockerfile).
+
 ---
 
 Debido a que Heroku asigna un puerto arbitrario al contenedor, debemos ejecutar Flask tomando el puerto de la variable de entorno que crea Heroku. En mi caso queda de la siguiente forma:

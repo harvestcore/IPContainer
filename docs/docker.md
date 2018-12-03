@@ -7,24 +7,23 @@
 Primero he creado el *Dockerfile*:
 
 ```dockerfile
-FROM mysql:latest
+FROM python:3.6-slim-stretch
 
-ENV MYSQL_DATABASE ipcdb
-ENV MYSQL_ROOT_PASSWORD root
+# Copio los archivos necesarios en el directorio /ipc.
+COPY . ./ipc
 
-COPY ./ipcdb.sql /docker-entrypoint-initdb.d
-COPY . ipc
+# Actualizo pip e instalo las dependencias necesarias.
+RUN pip install --upgrade pip
+RUN cd ./ipc && pip3 install -r requirements.txt
 
-RUN apt-get update
-RUN apt-get install -y python3-dev python3-pip
-RUN pip3 install -r ipc/requirements.txt
-
+# Expongo el puerto 5000
 EXPOSE 5000
 
-WORKDIR ./ipc
-
-CMD python3 application.py
+# Ejecuto el microservicio
+CMD cd ./ipc && python3 application.py
 ```
+
+**python:3.6-slim-stretch**: Utilizo esta imagen porque esta basada en Debian y porque es una imagen base bastante liviana.
 
 Para crear la imagen:
 

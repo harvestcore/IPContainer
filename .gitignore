@@ -4,6 +4,7 @@ envvar.env
 _Dockerfile
 Dockerfile_
 src/ipc.db
+.vagrant
 
 ### .env docker-compose ###
 keys.env

@@ -1,0 +1,58 @@
+---
+- hosts: all
+  tasks:
+    - name: Agregar repo python 3.6
+      become: true
+      apt_repository: repo=ppa:deadsnakes/ppa state=present
+
+    - name: Update apt
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
+    - name: Instalar git
+      become: true
+      apt: pkg=git state=present
+
+    - name: Instalar docker
+      become: true
+      apt: pkg=docker.io state=present
+
+    - name: Cambio permisos docker
+      become: true
+      file: path=/var/run/docker.sock owner=ubuntu group=ubuntu
+
+    - name: Instalar Python 3.6
+      become: true
+      apt: pkg=python3.6 state=present
+
+    - name: Instalar pip3
+      become: true
+      apt: pkg=python3-pip state=latest
+
+    - name: Instalar pip
+      become: true
+      apt: pkg=python-pip state=latest
+
+    - name: Instalar docker-py
+      become: true
+      pip: name=docker-py state=latest
+
+    - name: Instalar setuptools
+      become: true
+      pip: name=setuptools state=latest
+
+    - name: Instalar setuptools
+      become: true
+      file: path=/var/run/docker.sock owner=ubuntu group=docker
+
+    - name: Ejecutar servicio Docker
+      become: true
+      service: name=docker state=started
+
+    - name: Descargar docker IPC
+      docker_image: name=harvestcore/ipcontainer state=present
+
+    - name: Descargar docker IPC-mysql
+      docker_image: name=harvestcore/ipcontainer-mysql state=present

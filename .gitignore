@@ -5,6 +5,7 @@ _Dockerfile
 Dockerfile_
 src/ipc.db
 .vagrant
+*.retry
 
 ### .env docker-compose ###
 keys.env

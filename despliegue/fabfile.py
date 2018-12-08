@@ -11,9 +11,7 @@ def database_up():
     run('sleep 20')
 
 def app_up():
-    run('echo $MYSQL_KEY')
-    run('echo $SECRET_KEY')
-    run('docker run -p 80:5000 -e "MYSQL_KEY=$MYSQL_KEY" -e "SECRET_KEY=$SECRET_KEY" --name ipc harvestcore/ipcontainer')
+    run('docker run -d -p 80:5000 -e MYSQL_KEY=mysql+mysqlconnector://root:root@172.17.0.2:3306/ipcdb -e "SECRET_KEY=rQsgiA2EupfZTo7WIBY61CmHMWrUTvRBl6JiITvp1GW2uyP5rhHWEh3KZAb3R2F7" --name ipc harvestcore/ipcontainer')
 
 def database_down():
     run('docker stop ipcsql')
@@ -37,13 +35,10 @@ def update_app():
     run('docker pull harvestcore/ipcontainer')
 
 def ipcontainer_up():
-    dockerprune()
-    database_up()
-    app_up()
+    execute(dockerprune)
+    execute(database_up)
+    execute(app_up)
 
 def ipcontainer_down():
-    database_down()
-    app_down()
-
-def deploy():
-    run('whoami')
+    execute(database_down)
+    execute(app_down)

@@ -15,10 +15,6 @@
       become: true
       apt: pkg=git state=present
 
-    - name: Instalar gunicorn
-      become: true
-      apt: pkg=gunicorn state=present
-
     - name: Instalar docker
       become: true
       apt: pkg=docker.io state=present

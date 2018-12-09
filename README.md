@@ -50,7 +50,8 @@ Más info:
 - [**MariaDB**](https://mariadb.org/): Gestor de base de datos.
 - [**Travis-CI**](https://travis-ci.org/): Para integración contínua.
 - [**Heroku**](https://www.heroku.com/): Como PaaS.
-- [**Microsoft Azure**](https://azure.microsoft.com/es-es/): Como PaaS.
+- [**Microsoft Azure**](https://azure.microsoft.com/es-es/): Como IaaS.
+- [**Google Cloud**](https://cloud.google.com/): Como IaaS.
 
 ---
 <div id='doc' />

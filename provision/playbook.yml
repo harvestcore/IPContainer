@@ -1,5 +1,7 @@
 ---
-- hosts: all
+  
+- hosts: production
+  remote_user: aagomezies
   tasks:
     - name: Agregar repo python 3.6
       become: true
@@ -21,7 +23,7 @@
 
     - name: Cambio permisos docker
       become: true
-      file: path=/var/run/docker.sock owner=ubuntu group=ubuntu
+      file: path=/var/run/docker.sock owner=aagomezies group=docker
 
     - name: Instalar Python 3.6
       become: true
@@ -42,10 +44,6 @@
     - name: Instalar setuptools
       become: true
       pip: name=setuptools state=latest
-
-    - name: Instalar setuptools
-      become: true
-      file: path=/var/run/docker.sock owner=ubuntu group=docker
 
     - name: Ejecutar servicio Docker
       become: true

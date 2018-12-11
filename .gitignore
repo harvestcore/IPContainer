@@ -6,6 +6,7 @@ Dockerfile_
 src/ipc.db
 .vagrant
 *.retry
+ipcontainer-ca8ac2cd9b1f.json
 
 ### .env docker-compose ###
 keys.env

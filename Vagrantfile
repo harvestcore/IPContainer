@@ -1,15 +1,19 @@
-Vagrant.configure('2') do |config|
-  config.vm.box = 'azure'
+Vagrant.configure("2") do |config|
+  config.vm.box = "google/gce"
 
-  # use local ssh key to connect to remote vagrant box
-  config.ssh.private_key_path = '~/.ssh/id_rsa'
-  config.vm.provider :azure do |azure, override|
-
-    # each of the below values will default to use the env vars named as below if not specified explicitly
-    azure.tenant_id = ENV['AZURE_TENANT_ID']
-    azure.client_id = ENV['AZURE_CLIENT_ID']
-    azure.client_secret = ENV['AZURE_CLIENT_SECRET']
-    azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
+  config.vm.provider :google do |google, override|
+    google.google_project_id = ENV['PROJECT_ID']
+    google.google_client_email = ENV['CLIENT_EMAIL']
+    google.google_json_key_location = ENV['JSON_KEY_LOCATION']
+    
+    google.image_family = 'ubuntu-1604-lts'
+    google.zone = 'europe-west2-a'
+    google.name = 'ipcontainer'
+    google.machine_type = 'g1-small'
+    
+    override.ssh.username = 'aagomezies'
+    override.ssh.private_key_path = '~/.ssh/id_rsa'
+    # override.ssh.private_key_path = '~/.ssh/google_compute_engine'
   end
 
 end

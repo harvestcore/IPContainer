@@ -14,6 +14,9 @@ def app_up():
 def app_down():
     run('docker stop ipc')
 
+def dockersock():
+    run('sudo chown aagomezies:docker /var/run/docker.sock')
+
 def dockerprune():
     run('docker system prune -f')
 
@@ -27,6 +30,7 @@ def update_app():
     run('docker pull harvestcore/ipcontainer')
 
 def ipc_up():
+    execute(dockersock)
     execute(dockerprune)
     execute(app_up)
 

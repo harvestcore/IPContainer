@@ -34,6 +34,12 @@ La base de datos está compuesta por tres tablas, las cuales tienen la siguiente
 | password  | `varchar` |  100   |            Not null.            |
 
 
+#### Otros
+Las bases de datos (tres) se encuentran alojadas en Google Cloud.
+- BD para tests.
+- BD para despliegues en Heroku.
+- BD para despliegue en Google Cloud.
+
 
 ## BD Test
 

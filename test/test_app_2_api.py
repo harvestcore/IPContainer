@@ -115,11 +115,39 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
         self.assertEqual(response.json()['size'], 1, "Red con tamaño 1")
         
-    # def test_n_crea_red_ya_existente(self):
-    #     response = requests.post(url + '/createNetwork/user1/dns', headers={'x-access-token':token})
-    #     self.assertEqual(response.status_code, 200, "Devuelve codigo correcto")
-    #     self.assertEqual(response.json()['success'], False, "Red existente no creada.")
-    #     
+    def test_v_comprobar_heroku(self):
+        url = 'https://ipcontainer.herokuapp.com'
+        username = 'test'
+        password = 'test'
+
+        login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
+        token = login.json()['token']
+        self.assertIsInstance(token, str, "Devuelve string como token.")
+
+        response = requests.get(url)
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto.")
+        self.assertEqual(response.json()['status'], 'OK', "Devuelve estado correcto.")
+
+        response = requests.get(url + '/status')
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto.")
+        self.assertEqual(response.json()['status'], 'OK', "Devuelve estado correcto.")
+
+    def test_w_comprobar_produccion(self):
+        url = 'http://35.246.104.37'
+        username = 'test'
+        password = 'test'
+
+        login = requests.get(url + '/login', auth=HTTPBasicAuth(username, password))
+        token = login.json()['token']
+        self.assertIsInstance(token, str, "Devuelve string como token.")
+
+        response = requests.get(url)
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto.")
+        self.assertEqual(response.json()['status'], 'OK', "Devuelve estado correcto.")
+
+        response = requests.get(url + '/status')
+        self.assertEqual(response.status_code, 200, "Devuelve codigo correcto.")
+        self.assertEqual(response.json()['status'], 'OK', "Devuelve estado correcto.")       
 
     def test_z_finaliza_vaciando_tablas(self):
         response = requests.delete(url + '/dropUsers', headers={'x-access-token':token})

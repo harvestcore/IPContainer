@@ -14,5 +14,8 @@ Vagrant.configure("2") do |config|
     override.ssh.username = 'aagomezies'
     override.ssh.private_key_path = '~/.ssh/id_rsa'
   end
-
+  
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provision/playbook.yml"
+  end
 end

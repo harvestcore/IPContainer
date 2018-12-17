@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
     
     override.ssh.username = 'aagomezies'
     override.ssh.private_key_path = '~/.ssh/id_rsa'
-    # override.ssh.private_key_path = '~/.ssh/google_compute_engine'
   end
 
 end

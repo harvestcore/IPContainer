@@ -13,7 +13,7 @@ Despliegue final: 35.246.107.178
 
 
 ### Otros links
-- [Despliegue Zeit](https://proyecto-ohyqiqsrxe.now.sh/)
+- `Inactivo` [Despliegue Zeit](https://proyecto-ohyqiqsrxe.now.sh/)
 - `Inactivo` [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
 
 ---
@@ -66,6 +66,8 @@ Más info:
 - [**Autenticación con token**](docs/auth.md)
 - [**Base de datos**](docs/bd.md)
 - [**CI Test**](docs/tests.md)
+- [**Provisionamiento con Ansible**](docs/provision.md)
+- [**Despliegue con Fabric**](docs/despliegue.md)
 - [**Docker (Docker Hub y Heroku)**](docs/docker.md)
 - [**Despliegue en Heroku**](docs/heroku.md)
 - [**Despliegue en Microsoft Azure**](docs/azure.md)

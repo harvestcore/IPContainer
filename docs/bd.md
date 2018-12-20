@@ -1,6 +1,6 @@
 # Resumen de base de datos de IPContainer
 
-## BD Producción
+## Estructura de las tablas
 
 La base de datos está compuesta por tres tablas, las cuales tienen la siguiente estructura:
 
@@ -32,27 +32,11 @@ La base de datos está compuesta por tres tablas, las cuales tienen la siguiente
 | public_id | `varchar` |   50   |            Not null.            |
 |   name    | `varchar` |   35   |            Not null.            |
 | password  | `varchar` |  100   |            Not null.            |
+| admin  | `tinyint` |  1   |            -            |
 
 
-#### Otros
+### Otros
 Las bases de datos (tres) se encuentran alojadas en Google Cloud.
 - BD para tests.
 - BD para despliegues en Heroku.
 - BD para despliegue en Google Cloud.
-
-
-## BD Test
-
-Para realizar los tests (ya obsoletos) de forma local he utilizado la siguiente *"base de datos"*:
-
-- *Usuarios*: Lista de strings.
-
-- *Data*: Lista de json, los cuales tienen la siguiente estructura:
-
-  ```json
-  {
-      "username":"",
-      "type":"",
-      "data": []
-  }
-  ```

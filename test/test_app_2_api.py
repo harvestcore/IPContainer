@@ -133,7 +133,7 @@ class testAPI(unittest.TestCase):
         self.assertEqual(response.json()['status'], 'OK', "Devuelve estado correcto.")
 
     def test_w_comprobar_produccion(self):
-        url = 'http://35.246.107.178'
+        url = 'http://35.246.104.37'
         username = 'test'
         password = 'test'
 

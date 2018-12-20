@@ -66,6 +66,7 @@ Más info:
 - [**Autenticación con token**](docs/auth.md)
 - [**Base de datos**](docs/bd.md)
 - [**CI Test**](docs/tests.md)
+- [**Despliegue final en Google Cloud**](docs/desplieguefinal.md)
 - [**Provisionamiento con Ansible**](docs/provision.md)
 - [**Configuración de Vagrant con Google Cloud**](docs/vagrant.md)
 - [**Despliegue con Fabric**](docs/despliegue.md)

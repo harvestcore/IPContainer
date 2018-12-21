@@ -87,4 +87,4 @@ Más info:
 - [x] Autenticación con token.
 - [x] Despliegue del microservicio en un PaaS.
 - [x] Despliegue en docker.
-- [ ] Despliegue automático a las plataformas de producción.
+- [x] Despliegue automático a las plataformas de producción.

@@ -84,3 +84,14 @@ Algunos ejemplos:
 - Hacer un docker prune en la máquina de staging: `fab staging dockerprune`
 - Actualizar imagen microservicio: `fab production update_app`
 - Arrancar microservicio y ejecutar docker ps: `fab production ipc_up dockerps`
+
+### Despliegue de la app
+
+#### Actualizo la imagen Docker
+
+![update1](img/update1.png)
+![update2](img/update2.png)
+
+#### Arranco el microservicio
+
+![ipc_up](img/ipc_up.png)

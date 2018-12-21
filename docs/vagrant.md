@@ -59,3 +59,14 @@ vagrant provision
 # Apagar la máquina
 vagrant halt
 ```
+
+### Capturas
+
+#### vagrant up
+![vagrantup](img/vagrantup.png)
+
+#### vagrant ssh
+![vagrantssh](img/vagrantssh.png)
+
+#### vagrant halt
+![vagranthalt](img/vagranthalt.png)

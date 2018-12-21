@@ -110,3 +110,7 @@ Y se ejecutaría de la siguiente manera:
 ```bash
 vagrant provision
 ```
+
+### Provisionamiento
+
+![provisionamiento](img/provision.png)

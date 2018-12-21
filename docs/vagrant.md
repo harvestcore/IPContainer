@@ -62,6 +62,9 @@ vagrant halt
 
 ### Capturas
 
+#### Creación de la máquina y provisionamiento
+![vagrantup--provider=google](img/vagrantup--provider=google.png)
+
 #### vagrant up
 ![vagrantup](img/vagrantup.png)
 

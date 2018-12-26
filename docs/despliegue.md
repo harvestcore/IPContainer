@@ -5,7 +5,7 @@ El *fabfile* que he creado es el siguiente:
 ```python
 from fabric.api import *
 
-# Uso la configuración de hosts de SSH.
+# Uso la configuración de hosts de SSH. [Ref 1]
 env.use_ssh_config = True
 
 # Defino la máquina de staging.
@@ -48,6 +48,7 @@ def update_app():
 # 1. Cambio permisos socket.
 # 2. Ejecuto docker prune.
 # 3. Arranco el contenedor.
+# [Ref 2]
 def ipc_up():
     execute(dockersock)
     execute(dockerprune)
@@ -86,6 +87,7 @@ Algunos ejemplos:
 - Arrancar microservicio y ejecutar docker ps: `fab production ipc_up dockerps`
 
 ### Despliegue de la app
+[Ref 3]
 
 #### Actualizo la imagen Docker
 
@@ -95,3 +97,12 @@ Algunos ejemplos:
 #### Arranco el microservicio
 
 ![ipc_up](img/ipc_up.png)
+
+
+#### REFERENCIAS
+
+Para la elaboración del fabfile he usado la [documentación]() oficial de Fabric y [este vídeo](https://www.youtube.com/watch?v=ZpZkKbZwPoA).
+
+[Ref 1](https://youtu.be/ZpZkKbZwPoA?t=620) De aquí saco que se puedan definir los hosts con la configuración de SSH.
+[Ref 2](http://docs.fabfile.org/en/1.14/usage/execution.html#intelligently-executing-tasks-with-execute) De aquí saco el execute().
+[Ref 3](http://docs.fabfile.org/en/1.14/usage/fab.html#basic-use) De aquí saco cómo ejecutar los comandos de fabric.

@@ -34,6 +34,7 @@ Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contien
     # encuentra para poder instalarlo más tarde.
     #
     # become: true Indica que tiene que convertirse en superusuario para poder realizar tal tarea.
+    # [Ref 1] [Ref 2]
     - name: Agregar repo python 3.6
       become: true
       apt_repository: repo=ppa:deadsnakes/ppa state=present
@@ -50,12 +51,12 @@ Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contien
       become: true
       apt: pkg=docker.io state=present
 
-    # Cambio los permisos del socket de docker para poder usar docker sin problema alguno.
+    # Cambio los permisos del socket de docker para poder usar docker sin problema alguno. [Ref 4]
     - name: Cambio permisos docker
       become: true
       file: path=/var/run/docker.sock owner=aagomezies group=docker
 
-    # Copio archivo con las variables de entorno. Este archivo se le pasará como argumento a docker run al iniciar el contenedor.
+    # Copio archivo con las variables de entorno. Este archivo se le pasará como argumento a docker run al iniciar el contenedor. [Ref 5]
     - name: Copio env.list
       copy: src=./env.list dest=/home/aagomezies owner=aagomezies group=aagomezies
 
@@ -74,7 +75,7 @@ Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contien
       become: true
       apt: pkg=python-pip state=latest
 
-    # Instalo docker-py.
+    # Instalo docker-py. [Ref 6]
     - name: Instalar docker-py
       become: true
       pip: name=docker-py state=latest
@@ -84,12 +85,12 @@ Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contien
       become: true
       pip: name=setuptools state=latest
 
-    # Ejecuto el servicio de docker.
+    # Ejecuto el servicio de docker. [Ref 3]
     - name: Ejecutar servicio Docker
       become: true
       service: name=docker state=started
 
-    # Descargo el contenedor que contiene IPContainer.
+    # Descargo el contenedor que contiene IPContainer. [Ref 7]
     - name: Descargar docker IPC
       docker_image: name=harvestcore/ipcontainer state=present
 ```
@@ -114,3 +115,16 @@ vagrant provision
 ### Provisionamiento
 
 ![provisionamiento](img/provision.png)
+
+
+### REFERENCIAS
+
+Para aprender a usar y manejar Ansible he utilizado la [documentación](https://docs.ansible.com/) oficial y [ésta](https://www.youtube.com/watch?v=slNIwBPeQvE&list=PLTd5ehIj0goP2RSCvTiz3-Cko8U6SQV1P) serie de vídeos. Los vídeos los he usado para familiarizarme más con la herramienta y para comprender mejor sus capacidades.
+
+[Ref 1](https://docs.ansible.com/ansible/latest/modules/apt_module.html) De aquí saco como usar el paquete apt.
+[Ref 2](https://docs.ansible.com/ansible/latest/user_guide/become.html#id1) De aquí saco como hacerme administrador para ejecutar una orden.
+[Ref 3](https://docs.ansible.com/ansible/latest/modules/service_module.html) De aquí saco como manejar servicios.
+[Ref 4](https://docs.ansible.com/ansible/latest/modules/list_of_files_modules.html) De aquí saco como manejar el paquete de manejo de ficheros (en este caso permisos).
+[Ref 5](https://docs.ansible.com/ansible/latest/modules/copy_module.html) De aquí saco como manejar el paquete para copiar archivos.
+[Ref 6](https://docs.ansible.com/ansible/latest/modules/pip_module.html) De aquí saco como instalar paquetes para python.
+[Ref 7](https://docs.ansible.com/ansible/latest/modules/docker_image_module.html) De aquí saco como usar el paquete de docker.

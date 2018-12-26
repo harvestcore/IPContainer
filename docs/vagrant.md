@@ -73,3 +73,7 @@ vagrant halt
 
 #### vagrant halt
 ![vagranthalt](img/vagranthalt.png)
+
+
+### REFERENCIAS
+Para confeccionar el vagrantfile y demás configuración he usado la [documentación](https://github.com/mitchellh/vagrant-google) del repositorio del creador del plugin de Google Cloud para Vagrant, además de varios issues ya resueltos que se encuentran en el mismo repo. Por otro lado, [aquí](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) ha sido donde he encontrado la información relacionada con las claves de mi cuenta en Google Cloud.

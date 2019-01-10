@@ -71,7 +71,7 @@ Host ubuntu
 
 # Máquina de producción
 Host ipcontainer
-        HostName 35.246.104.37
+        HostName 35.246.87.7
         User aagomezies
         IdentityFile ~/.ssh/id_rsa
 ```

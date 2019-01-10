@@ -8,13 +8,13 @@ En primer lugar he definido en un archivo (llamado *hosts*) las diferentes máqu
 [staging]
 192.168.56.105
 
-[production]
-35.246.104.37
+[ipcontainer]
+35.246.87.7
 ```
 
 Entre corchetes se coloca el nombre de la máquina o grupo de máquinas, y debajo las direcciones IP de las mismas. En mi caso tengo dos máquinas:
 - **staging**: Máquina virtual local con la que he ido haciendo pruebas tanto de provisionamiento como de despliegue.
-- **production**: Máquina virtual en Google Cloud que uso como máquina de producción.
+- **ipcontainer**: Máquina virtual en Google Cloud que uso como máquina de producción.
 
 Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contiene las dependencias, software y demás configuración a instalar en la VM.
 
@@ -22,7 +22,7 @@ Por otro lado he creado el siguiente *playbook* (de formato *.ylm*), que contien
 ---
 
 # Hosts a los que conectarse para realizar el provisionamiento.
-- hosts: production
+- hosts: ipcontainer
 
   # Usuario a utilizar.
   remote_user: aagomezies

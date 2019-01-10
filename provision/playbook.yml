@@ -1,6 +1,6 @@
 ---
   
-- hosts: production
+- hosts: ipcontainer
   remote_user: aagomezies
   tasks:
     - name: Agregar repo python 3.6

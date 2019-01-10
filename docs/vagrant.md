@@ -7,7 +7,6 @@ El IAAS que he utilizado para el despliegue final es Google Cloud, manejado a tr
 
 # [Ref 0]
 
-# [Ref 12]
 # Versión 2 de la API de Vagrant.
 Vagrant.configure("2") do | config |
 
@@ -30,7 +29,7 @@ Vagrant.configure("2") do | config |
 
       # Configuración de las credenciales de Google Cloud.
 
-      # [Ref 2] [Ref 11]
+      # [Ref 2]
       # ID del proyecto.
       gcloud.google_project_id = ENV['PROJECT_ID']
 
@@ -124,7 +123,4 @@ Para confeccionar el vagrantfile y demás configuración he usado la [documentac
 - [Ref6](https://cloud.google.com/compute/docs/images) Listado con todas las imágenes disponibles. Elijo Ubuntu 16.04 LTS, razón [aquí](desplieguefinal.md).
 - [Ref7](https://cloud.google.com/compute/docs/regions-zones/) Listado con todas las regiones disponibles. Elijo *europe-west2-a* por cercanía.
 - [Ref8](https://cloud.google.com/compute/docs/machine-types) Listado con todos los tipos de máquinas disponibles para Google Compute Engine. Elijo *g1-small* porque es suficiente para ejecutar lo que necesito y porque es bastante barata.
-- [Ref9](https://github.com/mitchellh/vagrant-google#ssh-support) Aquí entiendo como configurar SSH para utilizar mi usuario y mi clave. En caso de no hacer esto, Vagrant intentaría crear un usuario llamado *vagrant* con una clave SSH generada para éste usuario. *aagomezies* es el usuario que tengo en Google Cloud, proviene del email que uso para registrarme en GC. La clave SSH es la generada para ese email en concreto.
-- [Ref10](https://www.vagrantup.com/docs/provisioning/ansible.html) Aquí entiendo cómo agregar el provisionamiento de *Ansible* en el *Vagrantfile*.
-- [Ref11](https://ruby-doc.org/core-2.1.4/ENV.html) Aquí entiendo como usar variables de entorno en Ruby.
-- [Ref12](https://www.sitepoint.com/vagrantfile-explained-setting-provisioning-shell/) Aquí he entendido la estructura básica de un Vagrantfile y otros conceptos básicos.
+- [Ref9](https://github.com/mitchellh/vagrant-google#ssh-support) Aquí encuentro como configurar SSH para utilizar mi usuario y mi clave. En caso de no hacer esto, Vagrant intentaría crear un usuario llamado *vagrant* con una clave SSH generada para éste usuario. *aagomezies* es el usuario que tengo en Google Cloud, proviene del email que uso para registrarme en GC. La clave SSH es la generada para ese email en concreto.

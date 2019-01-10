@@ -2,57 +2,76 @@
 El IAAS que he utilizado para el despliegue final es Google Cloud, manejado a través de su interfaz web y desde [Vagrant](https://www.vagrantup.com/). Para crear la instancia, conectarme a ella por SSH, aprovisionarla y demás he creado el siguiente *Vagrantfile*:
 
 ```ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 # [Ref 0]
 
 # [Ref 12]
 # Versión 2 de la API de Vagrant.
-Vagrant.configure("2") do |config|
+Vagrant.configure("2") do | config |
+
+  # Defino una máquina "ipcontainer". Definir una máquina me permite realizar configuraciones exclusivamente para ella, además de que en caso de agregar más máquinas en este Vagrantfile éstas quedarian diferenciadas. Por otro lado el nombre que asigno a la máquina es el que se usará como host a la hora de realizar el provisionamiento con Ansible.
+  config.vm.define "ipcontainer" do | ipcontainer |
+    
     # [Ref 1]
     # Tipo de máquina base.
     config.vm.box = "google/gce"
 
-    config.vm.provider :google do |google, override|
-        # [Ref 2] [Ref 11]
-        # ID del proyecto.
-        google.google_project_id = ENV['PROJECT_ID']
-        
-        # [Ref 3]
-        # "Email" del cliente de google.
-        google.google_client_email = ENV['CLIENT_EMAIL']
+    # Versión de la máquina base. Elijo 0.1.0 porque no hay otra más actualizada.
+    config.vm.box_version = "0.1.0"
 
-        # [Ref 4]
-        # JSON con información de la cuenta de Google Cloud, proyecto y demás.
-        google.google_json_key_location = ENV['JSON_KEY_LOCATION']
-        
-        # [Ref 5]
-        # Configuración de la máquina.
-        
-        # [Ref 6]
-        # Imagen: Ubuntu 16.04 LTS
-        google.image_family = 'ubuntu-1604-lts'
-        
-        # [Ref 7]
-        # Zona donde se ubica la VM: Oeste de Europa (Londres)
-        google.zone = 'europe-west2-a'
-        
-        # Nombre de la VM: ipcontainer
-        google.name = 'ipcontainer'
+    # Evito que Vagrant busque actualizaciones de la máquina base cada vez que arranque la máquina, debido a que la versión 0.1.0 es la única estable hasta la fecha.
+    config.vm.box_check_update = false
 
-        # [Ref 8]
-        # Características de la VM: 1 Core, 1,7GB de RAM y 10GB de HDD.
-        google.machine_type = 'g1-small'
-        
-        # [Ref 9]
-        # Configuración del usuario y private_key para conectarme por SSH.
-        override.ssh.username = 'aagomezies'
-        override.ssh.private_key_path = '~/.ssh/id_rsa'
+    # Configuración de la máquina "ipcontainer" con Google Cloud.
+    # Uso la variable gcloud para referirme a la configuración de GC y override para sobreescribir la configuración de SSH de Vagrant, para que use el usuario que quiero (aagomezies y ~/.ssh/id_rsa).
+    ipcontainer.vm.provider "google" do | gcloud, override |
+
+      # Configuración de las credenciales de Google Cloud.
+
+      # [Ref 2] [Ref 11]
+      # ID del proyecto.
+      gcloud.google_project_id = ENV['PROJECT_ID']
+
+      # [Ref 3]
+      # "Email" del cliente de google.
+      gcloud.google_client_email = ENV['CLIENT_EMAIL']
+
+      # [Ref 4]
+      # JSON con información de la cuenta de Google Cloud, proyecto y demás.
+      gcloud.google_json_key_location = ENV['JSON_KEY_LOCATION']
+      
+      # [Ref 5]
+      # Configuración de la máquina.
+    
+      # [Ref 6]
+      # Imagen: Ubuntu 16.04 LTS
+      gcloud.image_family = 'ubuntu-1604-lts'
+
+      # [Ref 7]
+      # Zona donde se ubica la VM: Oeste de Europa (Londres)
+      gcloud.zone = 'europe-west2-a'
+
+      # Nombre de la VM: ipcontainer
+      gcloud.name = 'ipcontainer'
+
+      # [Ref 8]
+      # Características de la VM: 1 Core, 1,7GB de RAM y 10GB de HDD.
+      gcloud.machine_type = 'g1-small'
+      
+      # [Ref 9]
+      # Configuración del usuario y private_key para conectarme por SSH.
+      override.ssh.username = "aagomezies"
+      override.ssh.private_key_path = '~/.ssh/id_rsa'
     end
-
+  
     # [Ref 10]
     # Provisionamiento con un playbook de Ansible.
-    config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/playbook.yml"
+    config.vm.provision "ansible" do | ans |
+      ans.playbook = "provision/playbook.yml"
     end
+  end
 end
 ```
 
@@ -61,7 +80,7 @@ Para crear la máquina por primera vez ejecuto:
 vagrant up --provider=google
 ```
 
-Una vez iniciada la máquina virtual le introduzco mi clave pública SSH (desde la interfaz web) y espero a que termine la instalación de la misma.
+Una vez iniciada la máquina virtual le introduzco mi clave pública SSH (desde la interfaz web) y espero a que termine la instalación de la misma. También habilito el tráfico del puerto 80, ya que desde no se puede hacer aún desde el Vagrantfile (el plugin no está actualizado).
 
 Tras terminar la máquina es completamente funcional, algunos comandos que puedo usar ahora son:
 ```bash

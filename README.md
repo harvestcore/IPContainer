@@ -61,6 +61,7 @@ Más info:
 
 ## Documentación:
 
+- [**Presentación**](docs/presentacion/ipcontainer.pdf)
 - [**Instalación**](docs/install.md)
 - [**API**](docs/api.md)
 - [**Autenticación con token**](docs/auth.md)

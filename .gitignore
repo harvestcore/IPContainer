@@ -7,7 +7,10 @@ src/ipc.db
 .vagrant
 *.retry
 ipcontainer-ca8ac2cd9b1f.json
+<<<<<<< HEAD
 env.list
+=======
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
 
 ### .env docker-compose ###
 keys.env

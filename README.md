@@ -13,7 +13,11 @@ Despliegue final: 35.246.87.7
 
 
 ### Otros links
+<<<<<<< HEAD
 - `Inactivo` [Despliegue Zeit](https://proyecto-ohyqiqsrxe.now.sh/)
+=======
+- [Despliegue Zeit](https://proyecto-ohyqiqsrxe.now.sh/)
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
 - `Inactivo` [Despliegue Azure](https://ipcontainer.azurewebsites.net/)
 
 ---

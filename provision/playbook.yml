@@ -1,6 +1,10 @@
 ---
   
+<<<<<<< HEAD
 - hosts: ipcontainer
+=======
+- hosts: production
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
   remote_user: aagomezies
   tasks:
     - name: Agregar repo python 3.6
@@ -13,6 +17,13 @@
         upgrade: yes
         update_cache: yes
 
+<<<<<<< HEAD
+=======
+    - name: Instalar git
+      become: true
+      apt: pkg=git state=present
+
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
     - name: Instalar docker
       become: true
       apt: pkg=docker.io state=present
@@ -21,9 +32,12 @@
       become: true
       file: path=/var/run/docker.sock owner=aagomezies group=docker
 
+<<<<<<< HEAD
     - name: Copio env.list
       copy: src=./env.list dest=/home/aagomezies owner=aagomezies group=aagomezies
 
+=======
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
     - name: Instalar Python 3.6
       become: true
       apt: pkg=python3.6 state=present
@@ -49,4 +63,11 @@
       service: name=docker state=started
 
     - name: Descargar docker IPC
+<<<<<<< HEAD
       docker_image: name=harvestcore/ipcontainer state=present
+=======
+      docker_image: name=harvestcore/ipcontainer state=present
+
+    - name: Descargar docker IPC-mysql
+      docker_image: name=harvestcore/ipcontainer-mysql state=present
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751

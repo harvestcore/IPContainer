@@ -128,3 +128,15 @@ KEY = "mysql+mysqlconnector://root:root@localhost:3306/ipcdb"
 Finalmente compruebo que el [despliegue](https://ipcontainer-docker.herokuapp.com/) funciona correctamente:
 
 ![ipcontainer-docker](img/ipcontainer-docker.png)
+<<<<<<< HEAD
+=======
+
+
+---
+
+Si la app no detecta la variable de entorno *MYSQL_KEY* tomará como key para la BD la siguiente:
+
+```bash
+KEY = "mysql+mysqlconnector://root:root@localhost:3306/ipcdb"
+```
+>>>>>>> f86fb491c923c01253a49baca4d01405cc42c751
